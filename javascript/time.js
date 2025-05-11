@@ -15,8 +15,8 @@ export class ExecutionTimer {
   constructor() {
     this.startTime = null;
     this.endTime = null;
-    // this.runProgramName = '';
   }
+
 
   /**
    * 記錄程式碼開始執行的時間

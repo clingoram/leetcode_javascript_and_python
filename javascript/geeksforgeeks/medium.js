@@ -311,3 +311,100 @@ var binomialCo = function(n,k) {
 }
 // let n = 4, k = 2;
 // console.log(binomialCo(n,k));
+
+/**
+ * Triplets with zero sum
+ * 
+ * Given an array arr[], the task is to find all possible indices {i, j, k} of triplet {arr[i], arr[j], arr[k]} such 
+ * that their sum is equal to zero and all indices in a triplet should be distinct (i != j, j != k, k != i). 
+ * 
+ * We need to return indices of a triplet in sorted order, i.e., i < j < k.
+ * 
+ * Examples 
+ * Input: arr[] = {0, -1, 2, -3, 1}
+ * Output: {{0, 1, 4}, {2, 3, 4}}
+ * Explanation:  Two triplets with sum 0 are:
+ * arr[0] + arr[1] + arr[4] = 0 + (-1) + 1 = 0
+ * arr[2] + arr[3] + arr[4] = 2 + (-3) + 1 = 0
+ * 
+ * Input: arr[] = {1, -2, 1, 0, 5}
+ * Output: {{0, 1, 2}}
+ * Explanation: Only triplet which satisfies the condition is arr[0] + arr[1] + arr[2] = 1 + (-2) + 1 = 0
+ * 
+ * Input: arr[] = {2, 3, 1, 0, 5}
+ * Output: {{}}
+ * Explanation: There is no triplet with sum 0
+ * 
+ * @param {number[]} arr 
+ * @returns {number[][]} arr
+ */
+var TripletsWithZeroSum = function(arr) {
+  // sum = 0;
+  // i != j,j != k, k != i;
+  // return indices.
+  let res = [];
+  for(let i = 0;i < arr.length - 2;i++) {
+    for(let j = i + 1;j < arr.length - 1;j++) {
+      for(let k = j + 1;k < arr.length;k++) {
+        if(arr[i] + arr[j] + arr[k] === 0 && i !== j && j !== k && k !== i){
+          res.push([i,j,k]);
+        }
+      }
+    }
+  }
+  return res;
+}
+// let arr = [0, -1, 2, -3, 1];
+// [[0, 1, 4],[2, 3, 4]]
+// console.log(TripletsWithZeroSum(arr));
+
+/**
+ * Partition Point
+ * 
+ * Given an array, find an element before which all elements are equal or smaller than it, and after which all the elements are equal or greater.
+ * 
+ * Note: Print -1, if no such element exists.
+ * 
+ * Examples:
+ * Input: arr[] = [5, 1, 4, 3, 6, 8, 10, 7, 9]
+ * Output: 6 
+ * Explanation: 6 is present at index 4. All elements on the left of arr[4] are smaller than it and all elements on right are greater.
+ * 
+ * Input: arr[] = [5, 1, 4, 4]
+ * Output: -1 
+ * Explanation: No such element exists.
+ * 
+ * 找到一個元素，使得它之前的所有元素都等於或小於它，並且它之後的所有元素都等於或大於它。
+ * 若沒有回傳-1
+ * 
+ * @param {number[]} arr
+ * @returns {number}
+ */
+var PartitionPoint = function(arr) {
+
+  const timer = new ExecutionTimer();
+  timer.execute(() => {
+
+    let p = Math.floor(arr.length / 2);
+    let leftSide = [];
+    let rigthtSide = [];
+    for(let i = 0;i < arr[p];i++) {
+      if(arr[i] < arr[p]){
+        leftSide.push(true);
+      }
+    }
+    for(let i = p;i < arr.length;i++){
+      if(arr[i] >= arr[p]){
+        rigthtSide.push(true);
+      }
+    }
+    return leftSide.length + rigthtSide.length === arr.length ? arr[p] : -1;
+  });
+}
+// let arr = [5, 1, 4, 3, 6, 8, 10, 7, 9];
+// 6
+// let arr = [5, 1, 4, 4];
+// -1
+let arr = [6,2,12,9,8,3,5];
+// -1
+console.log(PartitionPoint(arr));

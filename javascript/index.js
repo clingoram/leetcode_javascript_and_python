@@ -730,3 +730,5 @@ var nextPermutation = function(arr) {
 }
 // let arr = [2, 4, 1, 7, 5, 0];
 // console.log(nextPermutation(arr));
+
+
