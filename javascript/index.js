@@ -732,3 +732,33 @@ var nextPermutation = function(arr) {
 // console.log(nextPermutation(arr));
 
 
+/**
+ * Generate all Subarrays
+ * 
+ * Given an array arr[], the task is to generate all the possible subarrays of the given array.
+ *
+ *Examples: 
+ *
+ *Input: arr[] = [1, 2, 3]
+ *Output: [ [1], [1, 2], [2], [1, 2, 3], [2, 3], [3] ]
+ *
+ *Input: arr[] = [1, 2]
+ *Output: [ [1], [1, 2], [2] ]
+ *
+ * 
+ * @param {number[]} arr 
+ * @returns {number[][]}
+ */
+var generateSub = function(arr) {
+  let res = [];
+  for(let i = 0;i < arr.length;i++) {
+    for(let j = i;j < arr.length;j++) {
+      for (let k = i; k <= j; k++) {
+        res[j] = arr[k];
+      }
+    }
+  }
+  return res;
+}
+// let arr = [1,2,3];
+// console.log(generateSub(arr));

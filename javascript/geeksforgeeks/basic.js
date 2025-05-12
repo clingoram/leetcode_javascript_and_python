@@ -178,3 +178,29 @@ var nth = function (a1,a2,n) {
 // let a1 = 2,  a2 = 3,  n = 4;
 // 5
 // console.log(nth(a1,a2,n));
+
+/**
+ * Print Alternates
+ * 
+ * Given an array arr[], the task is to print every alternate element of the array starting from the first element.
+ * 
+ * Examples:
+ * Input: arr[] = [10, 20, 30, 40, 50]
+ * Output: 10 30 50
+ * Explanation: Print the first element (10), skip the second element (20), print the third element (30), skip the fourth element(40) and print the fifth element(50).
+ * 
+ * Input: arr[] = [-5, 1, 4, 2, 12]
+ * Output: -5 4 12
+ * 
+ * @param {number} arr
+ * @returns {number} 
+*/
+var printAlternates = function(arr) {
+  let res = [];
+  for(let i = 0;i < arr.length;i+=2){
+    res.push(arr[i]);
+  }
+  return res;
+}
+// let arr = [10, 20, 30, 40, 50];
+// console.log(printAlternates(arr));

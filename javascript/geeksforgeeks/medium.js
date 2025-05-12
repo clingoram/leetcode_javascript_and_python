@@ -405,6 +405,100 @@ var PartitionPoint = function(arr) {
 // 6
 // let arr = [5, 1, 4, 4];
 // -1
-let arr = [6,2,12,9,8,3,5];
+// let arr = [6,2,12,9,8,3,5];
 // -1
-console.log(PartitionPoint(arr));
+// console.log(PartitionPoint(arr));
+
+/**
+ * Largest pair sum
+ * 
+ * Given an unsorted of distinct integers, find the largest pair sum in it. For example, the largest pair sum is 74. 
+ * If there are less than 2 elements, then we need to return -1.
+ * 
+ * Input :  arr[] =  {12, 34, 10, 6, 40},  
+ * Output :  74
+ * 
+ * Input : arr[]  = {10, 10, 10},   
+ * Output : 20
+ * 
+ * Input  arr[]  = {10},  
+ * Output :  -1
+ * 
+ * 
+ * @param {number[]} arr 
+ * @returns {number}
+ */
+var largestPairSum = function(arr) {
+  if(arr.length < 2){
+    return -1;
+  }
+  arr.sort((a,b) => b - a);
+  return arr[0] + arr[1];
+}
+// let arr = [12,34,10,6,40];
+// 74
+// console.log(largestPairSum(arr));
+
+/**
+ * K’th Smallest in Unsorted Array
+ * 
+ * Given an array arr[] of N distinct elements and a number K, where K is smaller than the size of the array. 
+ * Find the K’th smallest element in the given array.
+ * 
+ * Examples:
+ * 
+ * Input: arr[] = {7, 10, 4, 3, 20, 15}, K = 3 
+ * Output: 7
+ * 
+ * Input: arr[] = {7, 10, 4, 3, 20, 15}, K = 4 
+ * Output: 10 
+ * 
+ * @param {number[]} arr 
+ * @param {number} k
+ * @returns {number} 
+ */
+var kthSmallest = function(arr,k) {
+  arr.sort((a,b) => a - b);
+  return arr[k - 1];
+}
+// let arr = [7, 10, 4, 3, 20, 15],k = 3;
+// 7
+// console.log(kthSmallest(arr,k));
+
+/**
+ * Search an in a sorted and rotated
+ * 
+ * Given a sorted and rotated array arr[] of n distinct elements, the task is to find the index of given key in the array. 
+ * If the key is not present in the array, return -1.
+ *
+ *Examples:  
+ *
+ *Input: arr[] = [5, 6, 7, 8, 9, 10, 1, 2, 3], key = 3
+ *Output: 8
+ *Explanation: 3 is present at index 8 in arr[].
+ *
+ *Input: arr[] = [3, 5, 1, 2], key = 6
+ *Output: -1
+ *Explanation: 6 is not present in arr[].
+ *
+ *Input: arr[] = [33, 42, 72, 99], key = 42
+ *Output: 1
+ *Explanation: 42 is found at index 1.
+ *
+ * 
+ * @param {number[]} arr 
+ * @param {number} k
+ * @returns {number} 
+ */
+var searchSortedRotated = function(arr,k) {
+  // return index
+  let ans = -1;
+  for(let i = 0;i< arr.length;i++) {
+    if(arr[i] === k){
+      ans = i;
+    }
+  }
+  return ans;
+}
+// let arr = [5, 6, 7, 8, 9, 10, 1, 2, 3],k = 3;
+// console.log(searchSortedRotated(arr,k));
