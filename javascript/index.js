@@ -815,6 +815,71 @@ var findEvenNumbers = function(digits) {
   let result = [];
     
 };
-let digits = [2,2,8,8,2];
+// let digits = [2,2,8,8,2];
 // [222,228,282,288,822,828,882]
-console.log(findEvenNumbers(digits));
+// console.log(findEvenNumbers(digits));
+
+/**
+ * 1370. Increasing Decreasing String
+ * 
+ * 
+ * 從s中
+ * 1. 依序移除最小char並將它加進result內值直到沒有char可移除為止
+ * 2.依序移除最大char並將它加進result內值直到沒有char可移除為止
+ * 重複這些步驟直到S沒有char為止
+ * 若一次要移除的char超過一個，例如很多個b，
+ * 
+ * @param {string} s
+ * @return {string}
+ */
+var sortString = function(s) {
+  // from a to z; from z to a
+  // hash table.count occurrence.
+  // if result iexist hte char,hash - 1
+  let res = "";
+  var alp = []
+  for (let i = "a".charCodeAt(0); i <= "z".charCodeAt(0); ++i) {
+      alp.push(String.fromCharCode(i));
+  }
+  while(res.length < s.length){
+    for(let i = 0;i < 26;i++) {
+      if(alp.includes(i)){
+        res += alp[i];
+        alp[i]--;
+      }
+    }
+    for(let i = 25;i >= 0;i--) {
+      if(alp.includes(i)){
+        res += alp[i];
+        alp[i]--;
+      }
+    }
+  }
+  console.log(res);
+
+  // let map = new Map();
+  // for(let i = 0;i < s.length;i++) {
+  //   let code = s.charCodeAt(i);
+  //   map.set(code,(map.get(code) || 0)  + 1);
+  // }
+  
+  // while(res.length < s.length){
+  //   for(let i = 0;i < map.size;i++) {
+  //     if(map[i]){
+
+  //     }
+      
+  //   }
+
+   
+  // }
+  // return res;
+};
+let s = "aaaabbbbcccc";
+// "abccbaabccba"
+// Explanation: After steps 1, 2 and 3 of the first iteration, result = "abc"
+// After steps 4, 5 and 6 of the first iteration, result = "abccba"
+// First iteration is done. Now s = "aabbcc" and we go back to step 1
+// After steps 1, 2 and 3 of the second iteration, result = "abccbaabc"
+// After steps 4, 5 and 6 of the second iteration, result = "abccbaabccba"
+console.log(sortString(s));
