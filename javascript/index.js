@@ -875,11 +875,12 @@ var sortString = function(s) {
   // }
   // return res;
 };
-let s = "aaaabbbbcccc";
+// let s = "aaaabbbbcccc";
 // "abccbaabccba"
 // Explanation: After steps 1, 2 and 3 of the first iteration, result = "abc"
 // After steps 4, 5 and 6 of the first iteration, result = "abccba"
 // First iteration is done. Now s = "aabbcc" and we go back to step 1
 // After steps 1, 2 and 3 of the second iteration, result = "abccbaabc"
 // After steps 4, 5 and 6 of the second iteration, result = "abccbaabccba"
-console.log(sortString(s));
+// console.log(sortString(s));
+
