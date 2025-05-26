@@ -884,3 +884,75 @@ var sortString = function(s) {
 // After steps 4, 5 and 6 of the second iteration, result = "abccbaabccba"
 // console.log(sortString(s));
 
+/**
+ * 2131. Longest Palindrome by Concatenating Two Letter Words
+ * 
+ * You are given an array of strings words. Each element of words consists of two lowercase English letters.
+ * 
+ * Create the longest possible palindrome by selecting some elements from words and concatenating them in any order. Each element can be selected at most once.
+ * Return the length of the longest palindrome that you can create. If it is impossible to create any palindrome, return 0.
+ * A palindrome is a string that reads the same forward and backward.
+ * 
+ *  
+ * 
+ * Example 1:
+ * Input: words = ["lc","cl","gg"]
+ * Output: 6
+ * Explanation: One longest palindrome is "lc" + "gg" + "cl" = "lcggcl", of length 6.
+ * Note that "clgglc" is another longest palindrome that can be created.
+ * 
+ * Example 2:
+ * Input: words = ["ab","ty","yt","lc","cl","ab"]
+ * Output: 8
+ * Explanation: One longest palindrome is "ty" + "lc" + "cl" + "yt" = "tylcclyt", of length 8.
+ * Note that "lcyttycl" is another longest palindrome that can be created.
+ * 
+ * Example 3:
+ * Input: words = ["cc","ll","xx"]
+ * Output: 2
+ * Explanation: One longest palindrome is "cc", of length 2.
+ * Note that "ll" is another longest palindrome that can be created, and so is "xx".
+ *  
+ * 
+ * Constraints:
+ * 1 <= words.length <= 105
+ * words[i].length == 2
+ * words[i] consists of lowercase English letters.
+ * 
+ * 找出words中可組成回文的字串最大長度為何，若無法建立回文，回傳0
+ * 每個元素最多只能使用一次
+ * @param {string[]} words
+ * @return {number}
+ */
+var longestPalindrome = function(words) {
+  // 4個元素會和在一起，最後將字串2組，各自長度為4，revese檢查
+  // return "tylc" === "clyt".split('').reverse().join('');
+  let m = new Map();
+  for(let i = 0;i < words.length;i++) {
+    if (!m.has(words[i])) {
+      m.set(words[i], 0);
+    }
+    m.set(words[i], m.get(words[i]) + 1);
+  }
+  m.forEach((values, keys) => {
+    const reverseKey = [...keys].reverse().join("");
+    console.log(keys+" space")
+    console.log(reverseKey)
+    // if(keys === reverseKey){
+    //   if(values % 2 === 0){
+    //     console.log(values)
+    //   }else{
+
+    //   }
+    // }
+  });
+};
+let words = ["ab","ty","yt","lc","cl","ab"];
+// 8
+// "ty" + "lc" + "cl" + "yt" = "tylc clyt"
+// abtyytba
+// let words = ["lc","cl","gg"];
+// 6
+// let words = ["cc","ll","xx"];
+// 2
+console.log(longestPalindrome(words));
