@@ -928,6 +928,7 @@ var longestPalindrome = function(words) {
   // 4個元素會和在一起，最後將字串2組，各自長度為4，revese檢查
   // return "tylc" === "clyt".split('').reverse().join('');
   let m = new Map();
+  let count = 0;
   for(let i = 0;i < words.length;i++) {
     if (!m.has(words[i])) {
       m.set(words[i], 0);
@@ -935,17 +936,18 @@ var longestPalindrome = function(words) {
     m.set(words[i], m.get(words[i]) + 1);
   }
   m.forEach((values, keys) => {
-    const reverseKey = [...keys].reverse().join("");
-    console.log(keys+" space")
-    console.log(reverseKey)
-    // if(keys === reverseKey){
-    //   if(values % 2 === 0){
-    //     console.log(values)
-    //   }else{
+    if(values % 2 !== 0){
+      // 反轉後是否有在words內
+      const reverseKey = [...keys].reverse().join("");
+      for(let i = 0;i < words.length;i++) {
+        if(reverseKey === words[i]){
 
-    //   }
-    // }
+        }
+      }
+    }
   });
+
+ 
 };
 let words = ["ab","ty","yt","lc","cl","ab"];
 // 8
@@ -955,4 +957,6 @@ let words = ["ab","ty","yt","lc","cl","ab"];
 // 6
 // let words = ["cc","ll","xx"];
 // 2
-console.log(longestPalindrome(words));
+// console.log(longestPalindrome(words));
+
+
