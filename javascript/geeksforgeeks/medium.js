@@ -502,3 +502,53 @@ var searchSortedRotated = function(arr,k) {
 }
 // let arr = [5, 6, 7, 8, 9, 10, 1, 2, 3],k = 3;
 // console.log(searchSortedRotated(arr,k));
+/**
+ * Peak Element in Array
+ * 
+ * Given an array arr[] where no two adjacent elements are same, find the index of a peak element. 
+ * An element is considered to be a peak element if it is strictly greater than its adjacent elements. 
+ * If there are multiple peak elements, return the index of any one of them.
+ * 
+ * Note: Consider the element before the first element and the element after the last element to be negative infinity.
+ * 
+ * Examples:
+ * Input: arr[] = [1, 2, 4, 5, 7, 8, 3]
+ * Output: 5
+ * Explanation: arr[5] = 8 is a peak element because arr[4] < arr[5] > arr[6].
+ * 
+ * Input: arr[] = [10, 20, 15, 2, 23, 90, 80]
+ * Output: 1 or 5
+ * Explanation: arr[1] = 20 and arr[5] = 90 are peak elements because arr[0] < arr[1] > arr[2] and arr[4] < arr[5] > arr[6].
+ * 
+ * Input: arr[] = [1, 2, 3]
+ * Output: 2
+ * Explanation: arr[2] is a peak element because arr[1] < arr[2] and arr[2] is the last element, so it has negative infinity to its right.
+ */
+var peak = function(arr){
+  // 找出比前面和後面元素大的index
+  let ans = 0;
+  // 長度只有1或arr[0] > arr[1] 
+  if(arr.length === 1 || arr[0] > arr[1]){
+    return ans;
+  }
+  if(arr[arr.length - 1] > arr[arr.length - 2]){
+    return arr.length - 1;
+  }
+  let left = 1;
+  let right = arr.length - 2;
+  while(left <= right){
+    let mid = left + Math.floor((right - left) / 2);
+
+    if(arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1]){
+      return mid;
+    }else if(arr[mid] < arr[mid + 1]){
+      left++;
+    }else{
+      right--;
+    }
+  }
+  return 0;
+}
+// let arr = [10, 20, 15, 2, 23, 90, 80];
+// 1 or 5
+// console.log(peak(arr));
