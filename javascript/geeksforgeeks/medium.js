@@ -552,3 +552,115 @@ var peak = function(arr){
 // let arr = [10, 20, 15, 2, 23, 90, 80];
 // 1 or 5
 // console.log(peak(arr));
+
+/**
+ * Min in a sorted and rotated
+ * 
+ * Given a sorted array of distinct elements arr[] of size n that is rotated at some unknown point, the task is to find the minimum element in it. 
+ * 
+ * Examples: 
+ * Input: arr[] = [5, 6, 1, 2, 3, 4]
+ * Output: 1
+ * Explanation: 1 is the minimum element present in the array.
+ * 
+ * Input: arr[] = [3, 1, 2]
+ * Output: 1
+ * Explanation: 1 is the minimum element present in the array.
+ * 
+ * Input: arr[] = [4, 2, 3]
+ * Output: 2
+ * Explanation: 2 is the only minimum element in the array.
+ */
+var findMin = function(arr) {
+  // 題意：找出最小的element
+
+  // solution 1.
+  // return Math.min(...arr);
+
+  // solution 2.
+  // let min = arr[0];
+  // for(let i = 0;i < arr.length;i++) {
+  //   if(arr[i] < min){
+  //     min = arr[i];
+  //   }
+  // }
+  // return min;
+
+  // solution 3.
+  let left = 0;
+  let right = arr.length - 1;
+  while(left <= right){
+    if(arr[left] < arr[right]){
+      return arr[left];
+    }
+    let mid = left + Math.floor((right - left) / 2);
+
+    if(arr[mid] > arr[right]){
+      right++;
+    }else{
+      left = mid;
+    }
+  }
+  return arr[left];
+}
+// let arr = [5, 6, 1, 2, 3, 4];
+// 1
+// console.log(findMin(arr));
+
+/**
+ * Find a Fixed Point in a given array
+ * 
+ * Given an array of n distinct integers sorted in ascending order, the task is to find the First Fixed Point in the array. Fixed Point in an array is an index i such that arr[i] equals i. Note that integers in the array can be negative. 
+ * 
+ * Note: If no Fixed Point is present in the array, print -1.
+ * 
+ * Examples: 
+ * Input: arr[] = [-10, -5, 0, 3, 7]
+ * Output: 3  
+ * Explanation: The value at index 3 of array arr[] is 3, which is equal to the index.
+ * 
+ * Input: arr[] = [0, 2, 5, 8, 17]
+ * Output: 0  
+ * Explanation: The value at index 0 of array arr[] is 0, which is equal to the index.
+ * 
+ * Input: arr[] = [-10, -5, 3, 4, 7, 9]
+ * Output: -1  
+ * Explanation: No Fixed Point
+ */
+var findFixedPoint = function(arr) {
+  // 找出i === element的 element，若沒有回傳-1
+
+  //  O(n) Time , O(1) Space
+  for(let i =0;i < arr.length;i++) {
+    if(i === arr[i]){
+      return arr[i];
+    }
+  }
+  return -1;
+}
+// let arr = [-10, -5, 0, 3, 7];
+// 3
+// console.log(findFixedPoint(arr));
+
+/**
+ * K most frequent words from a file
+ * 
+ * 顯示出各單字出現的次數，找出符合k的
+ */
+var kFreq = function(text,k) {
+  let obj = {};
+  let split = text.split(" ");
+  let ans = "";
+  for(let i =0;i < split.length;i++) {
+    obj[split[i]] = (obj[split[i]] || 0) + 1;
+  }
+  for(const [key,value] of Object.entries(obj)) {
+    if(value >= k){
+      ans += key;
+    }
+  }
+  return ans;
+}
+// const text = 'Welcome to the world of Geeks Geeks for Geeks is great';
+// const k = 3;
+// console.log(kFreq(text,k));
