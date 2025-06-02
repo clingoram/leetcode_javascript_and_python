@@ -1,39 +1,6 @@
 // debugger
 import {ExecutionTimer} from './time.js';
-
-/*
-EG:
-寫在程式開始執行的地方:
-let functionName = 'twoSum';
-let start = countTime(functionName);
-
-放置於程式執行結束處:
-let end = endTime(start);
-console.log(end);
-*/
-/**
- * 放置於程式開始執行處--開始時間
- * 
- * @param {string} fileName 執行function名稱
- * */
-// function countTime(fileName = null) {
-
-//   let start_time = performance.now();
-//     let end_time = performance.now();
-//     return end_time - start_time;
-// }
-/**
- * 結束時間
- * 放置於程式執行結束處，回傳結果的結束時間
- * 
- * @param {variable} start 開始執行程式的變數
- */
-// function endTime(start) {
-//   let end_time = new Date().getTime();
-
-//   return start[0] + '執行時間:' + (end_time - start[1]) / 5000 + 'ms';
-// }
-
+import assert from 'node:assert/strict';
 
 /*
 22. Generate Parentheses
@@ -226,86 +193,41 @@ var twoSum = function (nums, target) {
 
 
 /**
- * Check the exam
- * 
- * The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
- * The two arrays are not empty and are the same length. 
- * Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
- * 
- * If the score < 0, return 0.
- * For example:
- * checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
- * checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
- * checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
- * checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
- */
-function checkExam(array1, array2) {
-  /**
-   * 給兩個字串陣列參數，檢查這兩個參數中的元素有哪些不一樣，再依據他們的比對結果作加減分
-   * 一樣:+4分
-   * 不一樣:-1
-   * 空:+0
-   * ---------
-   * 參數長度會相等，可能會有空字串
-   * 比對兩個參數元素
-   */
-  let sum = 0;
-  if (array1.length !== array2.length) {
-    return;
-  }
-  for (let i = 0; i < array1.length; i++) {
-    if (array1[i] === array2[i]) {
-      sum = sum + 4;
-    } else if (array1[i] !== array2[i]) {
-      sum = sum - 1;
-    }
-    if (array1[i] === "" || array2[i] === "") {
-      sum = sum;
-    }
-  }
-  return sum < 0 ? 0 : sum;
-}
-// console.log(checkExam(["a", "a", "c", "b"], ["a", "a", "b", ""]));
-// 7
-
-/**
  * 1415. The k-th Lexicographical String of All Happy Strings of Length n
  * 
  * A happy string is a string that:
-
-consists only of letters of the set ['a', 'b', 'c'].
-s[i] != s[i + 1] for all values of i from 1 to s.length - 1 (string is 1-indexed).
-For example, strings "abc", "ac", "b" and "abcbabcbcb" are all happy strings and strings "aa", "baa" and "ababbc" are not happy strings.
-
-Given two integers n and k, consider a list of all happy strings of length n sorted in lexicographical order.
-
-Return the kth string of this list or return an empty string if there are less than k happy strings of length n.
-
-Hint:
- Generate recursively all the happy strings of length n.
- Sort them in lexicographical order and return the kth string if it exists.
-
-Example 1:
-Input: n = 1, k = 3
-Output: "c"
-Explanation: The list ["a", "b", "c"] contains all happy strings of length 1. The third string is "c".
-
-Example 2:
-Input: n = 1, k = 4
-Output: ""
-Explanation: There are only 3 happy strings of length 1.
-
-Example 3:
-Input: n = 3, k = 9
-Output: "cab"
-Explanation: There are 12 different happy string of length 3 ["aba", "abc", "aca", "acb", "bab", "bac", "bca", "bcb", "cab", "cac", "cba", "cbc"]. You will find the 9th string = "cab"
- 
-
-Constraints:
-1 <= n <= 10
-1 <= k <= 100
- */
-/**
+ * consists only of letters of the set ['a', 'b', 'c'].
+ * s[i] != s[i + 1] for all values of i from 1 to s.length - 1 (string is 1-indexed).
+ * For example, strings "abc", "ac", "b" and "abcbabcbcb" are all happy strings and strings "aa", "baa" and "ababbc" are not happy strings.
+ * 
+ * Given two integers n and k, consider a list of all happy strings of length n sorted in lexicographical order.
+ * Return the kth string of this list or return an empty string if there are less than k happy strings of length n.
+ * 
+ * Hint:
+ *  Generate recursively all the happy strings of length n.
+ *  Sort them in lexicographical order and return the kth string if it exists.
+ * 
+ * Example 1:
+ * Input: n = 1, k = 3
+ * Output: "c"
+ * Explanation: The list ["a", "b", "c"] contains all happy strings of length 1. The third string is "c".
+ * 
+ * Example 2:
+ * Input: n = 1, k = 4
+ * Output: ""
+ * Explanation: There are only 3 happy strings of length 1.
+ * 
+ * Example 3:
+ * Input: n = 3, k = 9
+ * Output: "cab"
+ * Explanation: There are 12 different happy string of length 3 ["aba", "abc", "aca", "acb", "bab", "bac", "bca", "bcb", "cab", "cac", "cba", "cbc"]. 
+ * You will find the 9th string = "cab"
+ * 
+ * 
+ * Constraints:
+ * 1 <= n <= 10
+ * 1 <= k <= 100
+ * 
  * Happy string: 
  *  只含有['a','b','c']、s[i] != s[i+1]
  * 
@@ -469,44 +391,6 @@ var minSteps = function(s, t) {
 // let s = "cotxazilut",t = "nahrrmcchxwrieqqdwdpneitkxgnt";
 // 27
 // console.log(minSteps(s,t));
-
-
-
-class Point {
-  constructor(x, y) {
-      this.x = x;
-      this.y = y;
-  }
-}
-
-// Returns true if two rectangles (l1, r1) and (l2, r2) overlap
-/**
- * Overlapping Rectangles
- * 
- * Given two rectangles, find if the given two rectangles overlap or not.
- * Note that a rectangle can be represented by two coordinates, top left and bottom right. So mainly we are given following four coordinates. 
- *  l1: Top Left coordinate of first rectangle. 
- *  r1: Bottom Right coordinate of first rectangle. 
- *  l2: Top Left coordinate of second rectangle. 
- *  r2: Bottom Right coordinate of second rectangle.
- * 
- * @param {number} l1
- * @returns {boolean}
- */
-var doOverlap = function(l1, r1, l2, r2) {
-  
-}
-
-// const l1 = new Point(0, 10);
-// const r1 = new Point(10, 0);
-// const l2 = new Point(5, 5);
-// const r2 = new Point(15, 0);
-
-// if (doOverlap(l1, r1, l2, r2)) {
-//   console.log("Rectangles Overlap");
-// } else {
-//   console.log("Rectangles Don't Overlap");
-// }
 
 
 
@@ -990,6 +874,7 @@ var kClosetEle = function(k,x,arr){
   }
 
 }
-let k = 4, x = 35, arr = [12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56];
+
+// let k = 4, x = 35, arr = [12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56];
 // [39,30,42,45]
-console.log(kClosetEle(k,x,arr));
+// console.log(kClosetEle(k,x,arr));
