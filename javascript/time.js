@@ -1,103 +1,72 @@
-// //放置於程式開始執行處--開始時間
-// let start_time = new Date().getTime();
-
-// //放置於程式執行結束處--程式進ajax撈完資料庫資料後回傳結果的結束時間
-// let end_time = new Date().getTime();
-
-// //計算花多久時間
-// alert((end_time - start_time) / 1000 + "sec");
-
-// let sorting = require("./index.js");
-
-// class Speed {
-//     constructor() {
-//         this.time = 0;
-//         this.runProgramName = '';
-//     }
-
-//     start(ProgramName) {
-//         this.time = new Date().getTime();
-//         this.runProgramName = ProgramName;
-
-//         return this.time;
-//         // console.log(this.runProgramName);
-//     }
-
-//     end(times, name) {
-//         let time = this.start(name);
-//         // let end_time = new Date().getTime();
-
-//         // console.log(time)
-//         console.log(`${name} 執行時間: ${Math.floor((new Date() - time) / times)} ms.`);
-//         // console.log(`${name} ${(end_time - time) / 1000} sec `);
-//     }
-
-// }
-
-// 測試
-// function testCase(functionName, times) {
-
-//     const Max = 1e7;
-//     let result = [];
-//     let number = 3000;
-
-//     console.log(functionName);
-//     while (number--) {
-//         result[number] = Math.floor(Math.random() * Max);
-//     }
-
-//     for (var i = 0; i < times; i++) {
-//         functionName(result);
-//     }
-//     return;
-// }
-
-//測試執行時間
-// function ExecuteProgram(keys) {
-
-//     for (let i = 0; i < keys.length; i++) {
-//         let speedTest = new Speed();
-//         speedTest.start(keys[i]);
-
-//         // testCase([keys[i]], 5);
-
-//         speedTest.end(5, keys);
-//     }
-
-// }
-// const key = ['twoSum', 'kidsWithCandies'];
-// ExecuteProgram(key);
-
-
-
-/*
-EG:
-寫在程式開始執行的地方:
-let functionName = 'twoSum';
-let start = countTime(functionName);
-放置於程式執行結束處:
-let end = endTime(start);
-console.log(end);
-*/
 /**
+ * 計算程式執行時間
  * 
- * @param {*} fileName 執行function名稱
+ * function XXX (){
+ *  const timer = new ExecutionTimer();
+ * 
+ *  timer.execute(() => {
+ *      // 放置欲計算執行之程式碼
+ *  });
+ *  return result;
+ * }
+ * 
  */
+export class ExecutionTimer {
+  constructor() {
+    this.startTime = null;
+    this.endTime = null;
+  }
 
-//放置於程式開始執行處--開始時間
-function countTime(fileName = null) {
 
-    let start_time = new Date().getTime();
-    let data = [
-        fileName,
-        start_time
-    ]
-    return data;
-}
-// 結束時間
-// 放置於程式執行結束處，回傳結果的結束時間
-function endTime(start) {
-    let end_time = new Date().getTime();
+  /**
+   * 記錄程式碼開始執行的時間
+   */
+  start() {
+    this.startTime = performance.now();
+    // this.runProgramName = ProgramName;
+  }
 
-    return start[0] + '執行時間:' + (end_time - start[1]) / 1000 + 'sec';
+  /**
+   * 記錄程式碼結束執行的時間
+   */
+  end() {
+    this.endTime = performance.now();
+  }
+
+  /**
+   * 計算並返回 endTime 和 startTime 之間的差值（執行時間），以毫秒為單位。
+   * 如果 start()或 end()尚未被調用，則發出警告並返回 null。
+   * @returns 
+   */
+  getTime(){
+    if (this.startTime === null || this.endTime === null) {
+      console.warn("請先調用 start() 和 end() 方法。");
+      return null;
+    }
+    return this.endTime - this.startTime;
+  }
+
+  /**
+   * 取得執行時間並以指定的標籤輸出到控制台
+   * @param {*} label 
+   */
+  logTime(label = "程式碼片段") {
+    const executionTime = this.getTime();
+    if (executionTime !== null) {
+        console.log(`${label} 執行時間：${executionTime.toFixed(2)} 毫秒`);
+    }
+  }
+
+  /**
+   * callback function（想測量執行時間的程式碼）和一個可選的標籤。
+   * 會自動調用 start()、執行回呼函數、調用 end()，然後使用指定的標籤記錄執行時間。
+   * @param {*} callback 
+   * @param {string} label 
+   */
+  execute(callback, label = "程式碼片段") {
+    this.start();
+    callback();
+    this.end();
+    this.logTime(label);
+  }
 }

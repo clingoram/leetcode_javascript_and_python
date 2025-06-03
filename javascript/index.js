@@ -1,41 +1,6 @@
 // debugger
-
-/*
-EG:
-寫在程式開始執行的地方:
-let functionName = 'twoSum';
-let start = countTime(functionName);
-
-放置於程式執行結束處:
-let end = endTime(start);
-console.log(end);
-*/
-/**
- * 放置於程式開始執行處--開始時間
- * 
- * @param {string} fileName 執行function名稱
- * */
-function countTime(fileName = null) {
-
-  let start_time = new Date().getTime();
-  let data = [
-    fileName,
-    start_time
-  ]
-  return data;
-}
-/**
- * 結束時間
- * 放置於程式執行結束處，回傳結果的結束時間
- * 
- * @param {variable} start 開始執行程式的變數
- */
-function endTime(start) {
-  let end_time = new Date().getTime();
-
-  return start[0] + '執行時間:' + (end_time - start[1]) / 5000 + 'ms';
-}
-
+import {ExecutionTimer} from './time.js';
+import assert from 'node:assert/strict';
 
 /*
 22. Generate Parentheses
@@ -228,86 +193,41 @@ var twoSum = function (nums, target) {
 
 
 /**
- * Check the exam
- * 
- * The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
- * The two arrays are not empty and are the same length. 
- * Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
- * 
- * If the score < 0, return 0.
- * For example:
- * checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
- * checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
- * checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
- * checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
- */
-function checkExam(array1, array2) {
-  /**
-   * 給兩個字串陣列參數，檢查這兩個參數中的元素有哪些不一樣，再依據他們的比對結果作加減分
-   * 一樣:+4分
-   * 不一樣:-1
-   * 空:+0
-   * ---------
-   * 參數長度會相等，可能會有空字串
-   * 比對兩個參數元素
-   */
-  let sum = 0;
-  if (array1.length !== array2.length) {
-    return;
-  }
-  for (let i = 0; i < array1.length; i++) {
-    if (array1[i] === array2[i]) {
-      sum = sum + 4;
-    } else if (array1[i] !== array2[i]) {
-      sum = sum - 1;
-    }
-    if (array1[i] === "" || array2[i] === "") {
-      sum = sum;
-    }
-  }
-  return sum < 0 ? 0 : sum;
-}
-// console.log(checkExam(["a", "a", "c", "b"], ["a", "a", "b", ""]));
-// 7
-
-/**
  * 1415. The k-th Lexicographical String of All Happy Strings of Length n
  * 
  * A happy string is a string that:
-
-consists only of letters of the set ['a', 'b', 'c'].
-s[i] != s[i + 1] for all values of i from 1 to s.length - 1 (string is 1-indexed).
-For example, strings "abc", "ac", "b" and "abcbabcbcb" are all happy strings and strings "aa", "baa" and "ababbc" are not happy strings.
-
-Given two integers n and k, consider a list of all happy strings of length n sorted in lexicographical order.
-
-Return the kth string of this list or return an empty string if there are less than k happy strings of length n.
-
-Hint:
- Generate recursively all the happy strings of length n.
- Sort them in lexicographical order and return the kth string if it exists.
-
-Example 1:
-Input: n = 1, k = 3
-Output: "c"
-Explanation: The list ["a", "b", "c"] contains all happy strings of length 1. The third string is "c".
-
-Example 2:
-Input: n = 1, k = 4
-Output: ""
-Explanation: There are only 3 happy strings of length 1.
-
-Example 3:
-Input: n = 3, k = 9
-Output: "cab"
-Explanation: There are 12 different happy string of length 3 ["aba", "abc", "aca", "acb", "bab", "bac", "bca", "bcb", "cab", "cac", "cba", "cbc"]. You will find the 9th string = "cab"
- 
-
-Constraints:
-1 <= n <= 10
-1 <= k <= 100
- */
-/**
+ * consists only of letters of the set ['a', 'b', 'c'].
+ * s[i] != s[i + 1] for all values of i from 1 to s.length - 1 (string is 1-indexed).
+ * For example, strings "abc", "ac", "b" and "abcbabcbcb" are all happy strings and strings "aa", "baa" and "ababbc" are not happy strings.
+ * 
+ * Given two integers n and k, consider a list of all happy strings of length n sorted in lexicographical order.
+ * Return the kth string of this list or return an empty string if there are less than k happy strings of length n.
+ * 
+ * Hint:
+ *  Generate recursively all the happy strings of length n.
+ *  Sort them in lexicographical order and return the kth string if it exists.
+ * 
+ * Example 1:
+ * Input: n = 1, k = 3
+ * Output: "c"
+ * Explanation: The list ["a", "b", "c"] contains all happy strings of length 1. The third string is "c".
+ * 
+ * Example 2:
+ * Input: n = 1, k = 4
+ * Output: ""
+ * Explanation: There are only 3 happy strings of length 1.
+ * 
+ * Example 3:
+ * Input: n = 3, k = 9
+ * Output: "cab"
+ * Explanation: There are 12 different happy string of length 3 ["aba", "abc", "aca", "acb", "bab", "bac", "bca", "bcb", "cab", "cac", "cba", "cbc"]. 
+ * You will find the 9th string = "cab"
+ * 
+ * 
+ * Constraints:
+ * 1 <= n <= 10
+ * 1 <= k <= 100
+ * 
  * Happy string: 
  *  只含有['a','b','c']、s[i] != s[i+1]
  * 
@@ -471,44 +391,6 @@ var minSteps = function(s, t) {
 // let s = "cotxazilut",t = "nahrrmcchxwrieqqdwdpneitkxgnt";
 // 27
 // console.log(minSteps(s,t));
-
-
-
-class Point {
-  constructor(x, y) {
-      this.x = x;
-      this.y = y;
-  }
-}
-
-// Returns true if two rectangles (l1, r1) and (l2, r2) overlap
-/**
- * Overlapping Rectangles
- * 
- * Given two rectangles, find if the given two rectangles overlap or not.
- * Note that a rectangle can be represented by two coordinates, top left and bottom right. So mainly we are given following four coordinates. 
- *  l1: Top Left coordinate of first rectangle. 
- *  r1: Bottom Right coordinate of first rectangle. 
- *  l2: Top Left coordinate of second rectangle. 
- *  r2: Bottom Right coordinate of second rectangle.
- * 
- * @param {number} l1
- * @returns {boolean}
- */
-var doOverlap = function(l1, r1, l2, r2) {
-  
-}
-
-// const l1 = new Point(0, 10);
-// const r1 = new Point(10, 0);
-// const l2 = new Point(5, 5);
-// const r2 = new Point(15, 0);
-
-// if (doOverlap(l1, r1, l2, r2)) {
-//   console.log("Rectangles Overlap");
-// } else {
-//   console.log("Rectangles Don't Overlap");
-// }
 
 
 
@@ -732,3 +614,309 @@ var nextPermutation = function(arr) {
 }
 // let arr = [2, 4, 1, 7, 5, 0];
 // console.log(nextPermutation(arr));
+
+
+/**
+ * Generate all Subarrays
+ * 
+ * Given an array arr[], the task is to generate all the possible subarrays of the given array.
+ *
+ *Examples: 
+ *
+ *Input: arr[] = [1, 2, 3]
+ *Output: [ [1], [1, 2], [2], [1, 2, 3], [2, 3], [3] ]
+ *
+ *Input: arr[] = [1, 2]
+ *Output: [ [1], [1, 2], [2] ]
+ *
+ * 
+ * @param {number[]} arr 
+ * @returns {number[][]}
+ */
+var generateSub = function(arr) {
+  let res = [];
+  for(let i = 0;i < arr.length;i++) {
+    for(let j = i;j < arr.length;j++) {
+      for (let k = i; k <= j; k++) {
+        res[j] = arr[k];
+      }
+    }
+  }
+  return res;
+}
+// let arr = [1,2,3];
+// console.log(generateSub(arr));
+
+/**
+ * 2094. Finding 3-Digit Even Numbers
+ * 
+ * You are given an integer array digits, where each element is a digit. The array may contain duplicates.
+ * 
+ * You need to find all the unique integers that follow the given requirements:
+ * The integer consists of the concatenation of three elements from digits in any arbitrary order.
+ * The integer does not have leading zeros.
+ * The integer is even.
+ * For example, if the given digits were [1, 2, 3], integers 132 and 312 follow the requirements.
+ * 
+ * Return a sorted array of the unique integers.
+ * 
+ * Hints:
+ * 1.The range of possible answers includes all even numbers between 100 and 999 inclusive. 
+ * Could you check each possible answer to see if it could be formed from the digits in the array? 
+ * 
+ * Example 1:
+ * Input: digits = [2,1,3,0]
+ * Output: [102,120,130,132,210,230,302,310,312,320]
+ * Explanation: All the possible integers that follow the requirements are in the output array. 
+ * Notice that there are no odd integers or integers with leading zeros.
+ * 
+ * Example 2:
+ * Input: digits = [2,2,8,8,2]
+ * Output: [222,228,282,288,822,828,882]
+ * Explanation: The same digit can be used as many times as it appears in digits. 
+ * In this example, the digit 8 is used twice each time in 288, 828, and 882. 
+ * 
+ * Example 3:
+ * Input: digits = [3,7,5]
+ * Output: []
+ * Explanation: No even integers can be formed using the given digits.
+ *  
+ * 
+ * Constraints:
+ * 3 <= digits.length <= 100
+ * 0 <= digits[i] <= 9
+ * 
+ * 依據參數看能夠組成幾個是偶數且不重複的3位數的數字
+ * 
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var findEvenNumbers = function(digits) {
+  // range from 100 to 999.
+  // hash table or set (unique)
+  // all elements need to be even.Element length === 3.
+  // no leading zero.
+  let result = [];
+    
+};
+// let digits = [2,2,8,8,2];
+// [222,228,282,288,822,828,882]
+// console.log(findEvenNumbers(digits));
+
+/**
+ * 1370. Increasing Decreasing String
+ * 
+ * 
+ * 從s中
+ * 1. 依序移除最小char並將它加進result內值直到沒有char可移除為止
+ * 2.依序移除最大char並將它加進result內值直到沒有char可移除為止
+ * 重複這些步驟直到S沒有char為止
+ * 若一次要移除的char超過一個，例如很多個b，
+ * 
+ * @param {string} s
+ * @return {string}
+ */
+var sortString = function(s) {
+  // from a to z; from z to a
+  // hash table.count occurrence.
+  // if result iexist hte char,hash - 1
+  let res = "";
+  var alp = []
+  for (let i = "a".charCodeAt(0); i <= "z".charCodeAt(0); ++i) {
+      alp.push(String.fromCharCode(i));
+  }
+  while(res.length < s.length){
+    for(let i = 0;i < 26;i++) {
+      if(alp.includes(i)){
+        res += alp[i];
+        alp[i]--;
+      }
+    }
+    for(let i = 25;i >= 0;i--) {
+      if(alp.includes(i)){
+        res += alp[i];
+        alp[i]--;
+      }
+    }
+  }
+  console.log(res);
+
+  // let map = new Map();
+  // for(let i = 0;i < s.length;i++) {
+  //   let code = s.charCodeAt(i);
+  //   map.set(code,(map.get(code) || 0)  + 1);
+  // }
+  
+  // while(res.length < s.length){
+  //   for(let i = 0;i < map.size;i++) {
+  //     if(map[i]){
+
+  //     }
+      
+  //   }
+
+   
+  // }
+  // return res;
+};
+// let s = "aaaabbbbcccc";
+// "abccbaabccba"
+// Explanation: After steps 1, 2 and 3 of the first iteration, result = "abc"
+// After steps 4, 5 and 6 of the first iteration, result = "abccba"
+// First iteration is done. Now s = "aabbcc" and we go back to step 1
+// After steps 1, 2 and 3 of the second iteration, result = "abccbaabc"
+// After steps 4, 5 and 6 of the second iteration, result = "abccbaabccba"
+// console.log(sortString(s));
+
+/**
+ * 2131. Longest Palindrome by Concatenating Two Letter Words
+ * 
+ * You are given an array of strings words. Each element of words consists of two lowercase English letters.
+ * 
+ * Create the longest possible palindrome by selecting some elements from words and concatenating them in any order. Each element can be selected at most once.
+ * Return the length of the longest palindrome that you can create. If it is impossible to create any palindrome, return 0.
+ * A palindrome is a string that reads the same forward and backward.
+ * 
+ *  
+ * 
+ * Example 1:
+ * Input: words = ["lc","cl","gg"]
+ * Output: 6
+ * Explanation: One longest palindrome is "lc" + "gg" + "cl" = "lcggcl", of length 6.
+ * Note that "clgglc" is another longest palindrome that can be created.
+ * 
+ * Example 2:
+ * Input: words = ["ab","ty","yt","lc","cl","ab"]
+ * Output: 8
+ * Explanation: One longest palindrome is "ty" + "lc" + "cl" + "yt" = "tylcclyt", of length 8.
+ * Note that "lcyttycl" is another longest palindrome that can be created.
+ * 
+ * Example 3:
+ * Input: words = ["cc","ll","xx"]
+ * Output: 2
+ * Explanation: One longest palindrome is "cc", of length 2.
+ * Note that "ll" is another longest palindrome that can be created, and so is "xx".
+ *  
+ * 
+ * Constraints:
+ * 1 <= words.length <= 105
+ * words[i].length == 2
+ * words[i] consists of lowercase English letters.
+ * 
+ * 找出words中可組成回文的字串最大長度為何，若無法建立回文，回傳0
+ * 每個元素最多只能使用一次
+ * @param {string[]} words
+ * @return {number}
+ */
+var longestPalindrome = function(words) {
+  // 4個元素會和在一起，最後將字串2組，各自長度為4，revese檢查
+  // return "tylc" === "clyt".split('').reverse().join('');
+  let m = new Map();
+  let count = 0;
+  for(let i = 0;i < words.length;i++) {
+    if (!m.has(words[i])) {
+      m.set(words[i], 0);
+    }
+    m.set(words[i], m.get(words[i]) + 1);
+  }
+  m.forEach((values, keys) => {
+    if(values % 2 !== 0){
+      // 反轉後是否有在words內
+      const reverseKey = [...keys].reverse().join("");
+      for(let i = 0;i < words.length;i++) {
+        if(reverseKey === words[i]){
+
+        }
+      }
+    }
+  });
+
+ 
+};
+let words = ["ab","ty","yt","lc","cl","ab"];
+// 8
+// "ty" + "lc" + "cl" + "yt" = "tylc clyt"
+// abtyytba
+// let words = ["lc","cl","gg"];
+// 6
+// let words = ["cc","ll","xx"];
+// 2
+// console.log(longestPalindrome(words));
+
+
+/**
+ * K closest elements
+ * 
+ * Given a sorted array arr[] of unique elements and a value x, find the k closest elements to x in arr[]. 
+ * 
+ * Note that if the element is present in array, then it should not be in output, only the other closest elements are required.
+ * 
+ * Examples: 
+ * Input: k = 4, x = 35, arr[] = [12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56]
+ * Output: 39 30 42 45
+ * 
+ * Input: k = 2, x = 4, arr[] = {1, 3, 4, 10, 12}
+ * Output: 3 1
+ * 
+ * 找出最接近x值的k個元素，若x也在陣列中，不要讓它出現
+ * @param {number} k 
+ * @param {number} x 
+ * @param {number[]} arr 
+ * @returns {number[]}
+ */
+var kClosetEle = function(k,x,arr){
+  let res = [];
+  let diff = 0;
+  for(let i = 0;i < arr.length;i++) {
+    if(Math.abs(arr[i] - x) ){
+
+    }
+  }
+
+}
+
+// let k = 4, x = 35, arr = [12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56];
+// [39,30,42,45]
+// console.log(kClosetEle(k,x,arr));
+
+/**
+ * 2929. Distribute Candies Among Children II
+ * 
+ * You are given two positive integers n and limit.
+ * Return the total number of ways to distribute n candies among 3 children such that no child gets more than limit candies.
+ * 
+ * Hints:
+ * 1.We can enumerate the number of candies of one particular child, let it be i which means 0 <= i <= min(limit, n).
+ * 2.Suppose the 2nd child gets j candies. Then 0 <= j <= limit and i + j <= n.
+ * 3.The 3rd child will hence get n - i - j candies and we should have 0 <= n - i - j <= limit.
+ * 4.After some transformations, for each i, we have max(0, n - i - limit) <= j <= min(limit, n - i), each j corresponding to a solution. 
+ * So the number of solutions for some i is max(min(limit, n - i) - max(0, n - i - limit) + 1, 0). Sum the expression for every i in [0, min(n, limit)].
+ * 
+ * Example 1:
+ * Input: n = 5, limit = 2
+ * Output: 3
+ * Explanation: There are 3 ways to distribute 5 candies such that no child gets more than 2 candies: (1, 2, 2), (2, 1, 2) and (2, 2, 1).
+ * 
+ * Example 2:
+ * Input: n = 3, limit = 3
+ * Output: 10
+ * Explanation: There are 10 ways to distribute 3 candies such that no child gets more than 3 candies: (0, 0, 3), (0, 1, 2), (0, 2, 1), (0, 3, 0), (1, 0, 2), (1, 1, 1), (1, 2, 0), (2, 0, 1), (2, 1, 0) and (3, 0, 0).
+ *  
+ * 
+ * Constraints:
+ * 1 <= n <= 106
+ * 1 <= limit <= 106
+ * 
+ * n = 糖果數量;limit = 每個小孩的糖果不能超過
+ * 3個小孩要能得到n個糖果，每個小孩拿到的糖果不能超過limit，共有幾種分法
+ * @param {number} n
+ * @param {number} limit
+ * @return {number}
+ */
+var distributeCandies = function(n, limit) {
+  let minCandy = Math.min(n,limit);
+
+};
+// let n = 3, limit = 3;
+// 10
+// console.log(distributeCandies(n,limit));
