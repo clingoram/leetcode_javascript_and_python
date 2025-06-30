@@ -963,3 +963,18 @@ var answerString = function(word, numFriends) {
 };
 
 
+/**
+ * 594. Longest Harmonious Subsequence
+ * 
+ * harmonious array = 最大值與最小值差1
+ * 回傳能夠成harmonious array的子序列長度
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findLHS = function(nums) {
+    
+};
+// let nums = [1,3,2,2,5,2,3,7];
+// 5
+// console.log(findLHS(nums));
+
