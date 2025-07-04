@@ -986,7 +986,45 @@ function sumClosest(arr, target) {
   
 
 }
-let arr = [5, 2, 7, 1, 4];
-let target = 10;
+// let arr = [5, 2, 7, 1, 4];
+// let target = 10;
 // [2,7]
-console.log(sumClosest(arr, target));
+// console.log(sumClosest(arr, target));
+
+/**
+ * Closest pair from two sorted arrays
+ * 
+ * Given two arrays arr1[0...m-1] and arr2[0..n-1], and a number x, 
+ * the task is to find the pair arr1[i] + arr2[j] such that absolute value of (arr1[i] + arr2[j] - x) is minimum.
+ * 
+ * Example: 
+ * Input:  
+ * arr1[] = {1, 4, 5, 7};
+ * arr2[] = {10, 20, 30, 40};
+ * x = 32
+ * Output:  1 and 30
+ * 
+ * Input:  
+ * arr1[] = {1, 4, 5, 7};
+ * arr2[] = {10, 20, 30, 40};
+ * x = 50      
+ * Output:  7 and 40
+ * 
+ * 兩個數值陣列參數和數值x，找出arr1[i] + arr2[j] 是arr1[i] + arr2[j] - x的最小值
+ * 
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @param {number} x
+ * @return {number[]}
+ */
+var closetPair = function(arr1,arr2,x) {
+  let result = [];
+  for(let i = 0;i < arr1.length;i++) {
+
+  }
+
+}
+// let arr1 = [1,4,5,7],arr2 = [10,20,30,40],x = 32;
+// [1,30];
+// console.log(closetPair(arr1,arr2,x));
+
