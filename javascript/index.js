@@ -844,40 +844,7 @@ let words = ["ab","ty","yt","lc","cl","ab"];
 // console.log(longestPalindrome(words));
 
 
-/**
- * K closest elements
- * 
- * Given a sorted array arr[] of unique elements and a value x, find the k closest elements to x in arr[]. 
- * 
- * Note that if the element is present in array, then it should not be in output, only the other closest elements are required.
- * 
- * Examples: 
- * Input: k = 4, x = 35, arr[] = [12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56]
- * Output: 39 30 42 45
- * 
- * Input: k = 2, x = 4, arr[] = {1, 3, 4, 10, 12}
- * Output: 3 1
- * 
- * 找出最接近x值的k個元素，若x也在陣列中，不要讓它出現
- * @param {number} k 
- * @param {number} x 
- * @param {number[]} arr 
- * @returns {number[]}
- */
-var kClosetEle = function(k,x,arr){
-  let res = [];
-  let diff = 0;
-  for(let i = 0;i < arr.length;i++) {
-    if(Math.abs(arr[i] - x) ){
 
-    }
-  }
-
-}
-
-// let k = 4, x = 35, arr = [12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56];
-// [39,30,42,45]
-// console.log(kClosetEle(k,x,arr));
 
 /**
  * 2929. Distribute Candies Among Children II
@@ -961,5 +928,104 @@ var distributeCandies = function(n, limit) {
 var answerString = function(word, numFriends) {
     
 };
+
+
+/**
+ * 594. Longest Harmonious Subsequence
+ * 
+ * harmonious array = 最大值與最小值差1
+ * 回傳能夠成harmonious array的子序列長度
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findLHS = function(nums) {
+    
+};
+// let nums = [1,3,2,2,5,2,3,7];
+// 5
+// console.log(findLHS(nums));
+
+/**
+ * 2 Sum - Pair Sum Closest to Target using Binary Search
+ * 
+ * Given an array arr[] of n integers and an integer target, the task is to find a pair in arr[] such that it’s sum is closest to target.
+ * Note: Return the pair in sorted order and if there are multiple such pairs return the pair with maximum absolute difference. 
+ * If no such pair exists return an empty array.
+ * 
+ * 從陣列中找出一組加總後最接近target的陣列元素
+ * 以asc排序回傳，若有好幾組，則回傳差最大的
+ * 
+ * Examples:
+ * Input: arr[] = [10, 30, 20, 5], target = 25
+ * Output: [5, 20]
+ * Explanation: Out of all the pairs, [5, 20] has sum = 25 which is closest to 25.
+ * 
+ * 
+ * Input: arr[] = [5, 2, 7, 1, 4], target = 10
+ * Output: [2, 7]
+ * Explanation: As (4, 7) and (2, 7) both are closest to 10, but absolute difference of (2, 7) is 5 and (4, 7) is 3. Hence,[2, 7] has maximum absolute difference and closest to target.
+ * 
+ * Input: arr[] = [10], target = 10
+ * Output: []
+ * Explanation: As the input array has only 1 element, return an empty array.
+ * 
+ * 
+ * @param {number[]} arr
+ * @param {number} target
+ * @returns {number[]}  
+ */
+function sumClosest(arr, target) {
+  // binary search
+  // arr.sort((a,b) => a - b);
+  // let left = 0;
+  // let right = arr.length - 1;
+
+  if(arr.length <= 1){
+    return [];
+  }
+  
+
+}
+// let arr = [5, 2, 7, 1, 4];
+// let target = 10;
+// [2,7]
+// console.log(sumClosest(arr, target));
+
+/**
+ * Closest pair from two sorted arrays
+ * 
+ * Given two arrays arr1[0...m-1] and arr2[0..n-1], and a number x, 
+ * the task is to find the pair arr1[i] + arr2[j] such that absolute value of (arr1[i] + arr2[j] - x) is minimum.
+ * 
+ * Example: 
+ * Input:  
+ * arr1[] = {1, 4, 5, 7};
+ * arr2[] = {10, 20, 30, 40};
+ * x = 32
+ * Output:  1 and 30
+ * 
+ * Input:  
+ * arr1[] = {1, 4, 5, 7};
+ * arr2[] = {10, 20, 30, 40};
+ * x = 50      
+ * Output:  7 and 40
+ * 
+ * 兩個數值陣列參數和數值x，找出arr1[i] + arr2[j] 是arr1[i] + arr2[j] - x的最小值
+ * 
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @param {number} x
+ * @return {number[]}
+ */
+var closetPair = function(arr1,arr2,x) {
+  let result = [];
+  for(let i = 0;i < arr1.length;i++) {
+
+  }
+
+}
+// let arr1 = [1,4,5,7],arr2 = [10,20,30,40],x = 32;
+// [1,30];
+// console.log(closetPair(arr1,arr2,x));
 
 

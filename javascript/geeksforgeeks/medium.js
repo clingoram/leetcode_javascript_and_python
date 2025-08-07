@@ -664,3 +664,55 @@ var kFreq = function(text,k) {
 // const text = 'Welcome to the world of Geeks Geeks for Geeks is great';
 // const k = 3;
 // console.log(kFreq(text,k));
+
+/**
+ * K closest elements
+ * 
+ * Given a sorted array arr[] of unique elements and a value x, find the k closest elements to x in arr[]. 
+ * Note that if the element is present in array, then it should not be in output, only the other closest elements are required.
+ * 
+ * Examples: 
+ * Input: k = 4, x = 35, arr[] = [12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56]
+ * Output: 39 30 42 45
+ * 
+ * Input: k = 2, x = 4, arr[] = {1, 3, 4, 10, 12}
+ * Output: 3 1
+ * 
+ * Hints:
+ * An element a is closer to x than b if:
+ * |a - x| < |b - x|, or
+ * |a - x| == |b - x| and a > b (i.e., prefer the larger element if tied)
+ * 
+ * 找出最接近x值的k個元素，若x也在陣列中，不要讓它出現
+ * 
+ * @param {number} k 
+ * @param {number} x 
+ * @param {number[]} arr 
+ * @returns {number[]}
+ */
+var kClosetEle = function(k,x,arr){
+  // (arr[i] - x) < (arr[i + 1] - x ) or (arr[i] - x) === (arr[i+1] - x) && arr[i] > arr[i + 1]
+  let res = [];
+  arr.sort((a,b) =>{
+    let diffA = Math.abs(a - x);
+    let diffB = Math.abs(b - x);
+    // prefer larger element
+    if (diffA === diffB){
+      return b - a;
+    } 
+    return diffA - diffB;
+  })
+  for(let i = 0;i < arr.length;i++) {
+    if((Math.abs(arr[i] - x)) < Math.abs((arr[i + 1] - x)) && arr[i] !== x){
+      res.push(arr[i]);
+    }
+    if(res.length === k){
+      break;
+    }
+  }
+  return res;
+}
+
+// let k = 4, x = 35, arr = [12, 16, 22, 30, 35, 39, 42, 45, 48, 50, 53, 55, 56];
+// [39,30,42,45]
+// console.log(kClosetEle(k,x,arr));
