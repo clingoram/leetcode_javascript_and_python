@@ -1028,4 +1028,3 @@ var closetPair = function(arr1,arr2,x) {
 // [1,30];
 // console.log(closetPair(arr1,arr2,x));
 
-// 
