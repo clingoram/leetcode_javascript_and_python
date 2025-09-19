@@ -25,10 +25,14 @@ import math
 # from file name(module) import the class.
 from oop.Animals import Animals
 from oop.Tortoises import Tortoises
+from oop.Lion import Lion
 
 greek = Tortoises("福氣","7個月大","veggie","地中海型陸龜")
 greek.eat()
 greek.environment()
+
+lion = Lion("獅子","未知","肉食")
+lion.environment()
 
 # from oop.Fruit import Fruit
 # from oop.Melon import Melon

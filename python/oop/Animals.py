@@ -11,8 +11,10 @@ class Animals:
         print(f"{self.name}","is",f"{self.food}")
 
     def environment(self):
-        print("it's depends on specice")
+        print("依據不同物種來評估適合的環境")
 
     def get_sick(self):
         self.__health_level -= 20
         print(f"{self.name} 的健康值下降了。")
+
+    
