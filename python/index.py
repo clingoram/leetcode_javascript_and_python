@@ -10,6 +10,7 @@ python -V
 from math import sqrt
 from operator import le
 from typing import List
+import math
 
 
 # from numpy import diff
@@ -22,36 +23,27 @@ from typing import List
 
 # oop
 # from file name(module) import the class.
+from oop.Animals import Animals
+from oop.Tortoises import Tortoises
+from oop.Lion import Lion
+
+greek = Tortoises("福氣","7個月大","veggie","地中海型陸龜")
+greek.eat()
+greek.environment()
+
+lion = Lion("獅子","未知","肉食")
+lion.environment()
+
 # from oop.Fruit import Fruit
 # from oop.Melon import Melon
 # fruits = Fruit("Apple",3,5)
-# print(fruits.calculate())
+# print("價格：",f"{fruits.calculate()}")
 
-# fruits = Fruit()
 # fruits.make_watering()
 
-# v = Melon()
+# v = Melon("西瓜",65,10,30)
 # v.make_seedling()
 # v.palnt()
-
-
-
-def diagonalDifference(arr):
-  '''
-  Diagonal Difference
-  Complete the 'diagonalDifference' function below.
-
-  The function is expected to return an INTEGER.
-  The function accepts 2D_INTEGER_ARRAY arr as parameter.
-  '''
-  left = 0
-  right = 0
-  for i in range(len(arr)):
-    left += arr[i][i]
-    right += arr[i][len(arr) - 1 - i]
-  return abs(left - right)
-
-
 
 
 '''
@@ -221,53 +213,6 @@ class Solution:
 # print(a.getFinalState(nums,k,multiplier))
 
 
-
-'''
-3407. Substring Matching Pattern
-
-You are given a string s and a pattern string p, where p contains exactly one '*' character.
-The '*' in p can be replaced with any sequence of zero or more characters.
-Return true if p can be made a substring of s, and false otherwise.
-
-Hints:
-1. Divide the pattern in two strings and search in the string.
-
-Example 1:
-Input: s = "leetcode", p = "ee*e"
-Output: true
-Explanation:
-By replacing the '*' with "tcod", the substring "eetcode" matches the pattern.
-
-Example 2:
-Input: s = "car", p = "c*v"
-Output: false
-Explanation:
-There is no substring matching the pattern.
-
-Example 3:
-Input: s = "luck", p = "u*"
-Output: true
-Explanation:
-The substrings "u", "uc", and "uck" match the pattern.
-
-Constraints:
-1 <= s.length <= 50
-1 <= p.length <= 50 
-s contains only lowercase English letters.
-p contains only lowercase English letters and exactly one '*'
-
-參數為一個字串s和字串p，p內有一個"*"符號，而該符號可被替換成任一或多個字母
-若p的*號在替換成字母後可變成s的子字串，則回傳true
-否則false
-'''
-def hasMatch(s: str, p: str) -> bool:
-  #  將字串拆成兩部分再搜尋
-  return False
-# s = "leetcode"
-# p = "ee*e"
-# True
-# print(hasMatch(s,p))
-
 '''
 2523. Closest Prime Numbers in Range
 
@@ -296,8 +241,6 @@ Explanation: There exists only one prime number in the given range, so the condi
 
 Constraints:
 1 <= left <= right <= 106
-
-
 '''
 def closestPrimes(left: int, right: int) -> List[int]:
   '''
@@ -353,48 +296,3 @@ right = 19
 # print(closestPrimes(left,right))
 
 
-'''
-2873. Maximum Value of an Ordered Triplet I
-
-You are given a 0-indexed integer array nums.
-Return the maximum value over all triplets of indices (i, j, k) such that i < j < k. If all such triplets have a negative value, return 0.
-The value of a triplet of indices (i, j, k) is equal to (nums[i] - nums[j]) * nums[k].
-
-Hints:
-1.Use three nested loops to find all the triplets.
-
-Example 1:
-Input: nums = [12,6,1,2,7]
-Output: 77
-Explanation: The value of the triplet (0, 2, 4) is (nums[0] - nums[2]) * nums[4] = 77.
-It can be shown that there are no ordered triplets of indices with a value greater than 77. 
-
-Example 2:
-Input: nums = [1,10,3,4,19]
-Output: 133
-Explanation: The value of the triplet (1, 2, 4) is (nums[1] - nums[2]) * nums[4] = 133.
-It can be shown that there are no ordered triplets of indices with a value greater than 133.
-Example 3:
-
-Input: nums = [1,2,3]
-Output: 0
-Explanation: The only ordered triplet of indices (0, 1, 2) has a negative value of (nums[0] - nums[1]) * nums[2] = -3. Hence, the answer would be 0.
- 
-
-Constraints:
-3 <= nums.length <= 100
-1 <= nums[i] <= 106
-
-'''
-def maximumTripletValue(nums: List[int]) -> int:
-  # i < j < k
-  # (nums[i] - nums[j]) * nums[k]
-  ans = 0
-  
-  return ans
-
-
-nums = [12,6,1,2,7]
-# 77
-# (0, 2, 4) is (nums[0] - nums[2]) * nums[4] = 77.
-print(maximumTripletValue(nums))
