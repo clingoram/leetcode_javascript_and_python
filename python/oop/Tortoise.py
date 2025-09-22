@@ -1,16 +1,12 @@
-from oop.Animals import Animals
+from oop.Animal import Animal
 
-class Tortoises(Animals):
+class Tortoise(Animal):
     
     def __init__(self, name, age, food,speciceType:str):
         super().__init__(name, age, food)
         self.speciceType = speciceType
 
-    def eat(self):
-        return super().eat()
     
-    
-    # 覆寫父類別的方法
     def environment(self):
         '''
         環境
@@ -28,8 +24,10 @@ class Tortoises(Animals):
             except NameError:
                 print("eror")
 
-    def hibernation(self):
-        '''
-        冬眠
-        '''
-        print("if it's really cold")
+
+    # 抽象
+    def attack(self):
+        print("衝撞")
+    
+    def affend(self):
+        print("縮")

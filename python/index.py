@@ -11,7 +11,7 @@ from math import sqrt
 from operator import le
 from typing import List
 import math
-
+from collections import Counter
 
 # from numpy import diff
 # module
@@ -23,16 +23,22 @@ import math
 
 # oop
 # from file name(module) import the class.
-from oop.Animals import Animals
-from oop.Tortoises import Tortoises
+from oop.Animal import Animal
+from oop.Tortoise import Tortoise
 from oop.Lion import Lion
 
-greek = Tortoises("福氣","7個月大","veggie","地中海型陸龜")
+greek = Tortoise("福氣",7,"veggie","地中海型陸龜")
 greek.eat()
+greek.hibernation()
 greek.environment()
+greek.attack()
 
 lion = Lion("獅子","未知","肉食")
-lion.environment()
+lion.eat()
+# lion.attack()
+
+# print(lion.food)
+# lion.environment()
 
 # from oop.Fruit import Fruit
 # from oop.Melon import Melon
@@ -294,5 +300,6 @@ right = 19
 # [11,13]
 # 11, 13, 17, and 19.
 # print(closestPrimes(left,right))
+
 
 
