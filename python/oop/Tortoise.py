@@ -24,10 +24,13 @@ class Tortoise(Animal):
             except NameError:
                 print("eror")
 
-
+    # 繼承、覆寫
+    def hibernation(self):
+        return super().hibernation()
+    
     # 抽象
     def attack(self):
-        print("衝撞")
+        print("咬，但不太會發生")
     
     def affend(self):
-        print("縮")
+        print("縮進殼內")

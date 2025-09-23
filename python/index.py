@@ -8,10 +8,7 @@ python xxx.py(檔案名稱)
 python -V
 """
 from math import sqrt
-from operator import le
 from typing import List
-import math
-from collections import Counter
 
 # from numpy import diff
 # module
@@ -26,31 +23,20 @@ from collections import Counter
 from oop.Animal import Animal
 from oop.Tortoise import Tortoise
 from oop.Lion import Lion
+from oop.Behavior import move
 
 greek = Tortoise("福氣",7,"veggie","地中海型陸龜")
 greek.eat()
 greek.hibernation()
 greek.environment()
 greek.attack()
+greek.affend()
 
-lion = Lion("獅子","未知","肉食")
-lion.eat()
+# lion = Lion("獅子","未知","肉食")
+# lion.eat()
 # lion.attack()
-
-# print(lion.food)
+# # print(lion.food)
 # lion.environment()
-
-# from oop.Fruit import Fruit
-# from oop.Melon import Melon
-# fruits = Fruit("Apple",3,5)
-# print("價格：",f"{fruits.calculate()}")
-
-# fruits.make_watering()
-
-# v = Melon("西瓜",65,10,30)
-# v.make_seedling()
-# v.palnt()
-
 
 '''
 1415. The k-th Lexicographical String of All Happy Strings of Length n
@@ -88,135 +74,95 @@ Constraints:
 1 <= n <= 10
 1 <= k <= 100
 '''
-
-'''
-1980. Find Unique Binary String
-
-Given an array of strings nums containing n unique binary strings each of length n, return a binary string of length n that does not appear in nums. If there are multiple answers, you may return any of them.
-
-Hints:
-1. We can convert the given strings into base 10 integers.
-2. Can we use recursion to generate all possible strings? 
-
-Example 1:
-Input: nums = ["01","10"]
-Output: "11"
-Explanation: "11" does not appear in nums. "00" would also be correct.
-
-Example 2:
-
-Input: nums = ["00","01"]
-Output: "11"
-Explanation: "11" does not appear in nums. "10" would also be correct.
-
-Example 3:
-Input: nums = ["111","011","001"]
-Output: "101"
-Explanation: "101" does not appear in nums. "000", "010", "100", and "110" would also be correct.
- 
-
-Constraints:
-n == nums.length
-1 <= n <= 16
-nums[i].length == n
-nums[i] is either '0' or '1'.
-All the strings of nums are unique.
-'''
-# class Solution:
-#   def findDifferentBinaryString(self, nums: List[str]) -> str:
+# def getHappyString(n: int, k: int) -> str:
 
 
-# nums = ["111","011","001"]
-# # 101
-# a = Solution()
-# print(a.findDifferentBinaryString(nums))
 
-class Solution:
+def getFinalState(nums: List[int], k: int, multiplier: int) -> List[int]:
     '''
-    3264. Final Array State After K Multiplication Operations I
+  3264. Final Array State After K Multiplication Operations I
 
-    You are given an integer array nums, an integer k, and an integer multiplier.
-    You need to perform k operations on nums. In each operation:
-      Find the minimum value x in nums. If there are multiple occurrences of the minimum value, select the one that appears first.
-      Replace the selected minimum value x with x * multiplier.
-    Return an integer array denoting the final state of nums after performing all k operations.
+  You are given an integer array nums, an integer k, and an integer multiplier.
+  You need to perform k operations on nums. In each operation:
+    Find the minimum value x in nums. If there are multiple occurrences of the minimum value, select the one that appears first.
+    Replace the selected minimum value x with x * multiplier.
+  Return an integer array denoting the final state of nums after performing all k operations.
 
-    Hints:
-    1. Maintain sorted pairs (nums[index], index) in a priority queue.
-    2. Simulate the operation k times.
+  Hints:
+  1. Maintain sorted pairs (nums[index], index) in a priority queue.
+  2. Simulate the operation k times.
 
-    Example 1:
-    Input: nums = [2,1,3,5,6], k = 5, multiplier = 2
-    Output: [8,4,6,5,6]
-    Explanation:
-      Operation	Result
-      After operation 1	[2, 2, 3, 5, 6]
-      After operation 2	[4, 2, 3, 5, 6]
-      After operation 3	[4, 4, 3, 5, 6]
-      After operation 4	[4, 4, 6, 5, 6]
-      After operation 5	[8, 4, 6, 5, 6]
-    
-    Example 2:
-    Input: nums = [1,2], k = 3, multiplier = 4
-    Output: [16,8]
-    Explanation:
-      Operation	Result
-      After operation 1	[4, 2]
-      After operation 2	[4, 8]
-      After operation 3	[16, 8]
-    
+  Example 1:
+  Input: nums = [2,1,3,5,6], k = 5, multiplier = 2
+  Output: [8,4,6,5,6]
+  Explanation:
+    Operation	Result
+    After operation 1	[2, 2, 3, 5, 6]
+    After operation 2	[4, 2, 3, 5, 6]
+    After operation 3	[4, 4, 3, 5, 6]
+    After operation 4	[4, 4, 6, 5, 6]
+    After operation 5	[8, 4, 6, 5, 6]
+  
+  Example 2:
+  Input: nums = [1,2], k = 3, multiplier = 4
+  Output: [16,8]
+  Explanation:
+    Operation	Result
+    After operation 1	[4, 2]
+    After operation 2	[4, 8]
+    After operation 3	[16, 8]
+  
 
-    Constraints:
-    1 <= nums.length <= 100
-    1 <= nums[i] <= 100
-    1 <= k <= 10
-    1 <= multiplier <= 5
+  Constraints:
+  1 <= nums.length <= 100
+  1 <= nums[i] <= 100
+  1 <= k <= 10
+  1 <= multiplier <= 5
 
-    3個參數:int array nums.int k & int multiplier
-    需在nums上操作K次，每次找出nums中最小值X，若有重複多個最小值出現，則取第一個出現的
-    將X汰換成 X * multiplier
-    回傳在操作K次上述步驟後的num
-    '''
-    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
-      # solution 1
-      # for _ in range(k):
-      #   minIndex = 0
-      #   for i in range(len(nums)):
-      #     if nums[i] < nums[minIndex]:
-      #       minIndex =i
-      #   nums[minIndex] *= multiplier
-      # return nums
+  3個參數:int array nums.int k & int multiplier
+  需在nums上操作K次，每次找出nums中最小值X，若有重複多個最小值出現，則取第一個出現的
+  將X汰換成 X * multiplier
+  回傳在操作K次上述步驟後的num
+  '''
 
-      # Solution 2.
-      # for _ in range(k):
-      #    x = nums.index(min(nums))
-      #    nums[x] *= multiplier
-      # return nums
+    # solution 1
+    # for _ in range(k):
+    #   minIndex = 0
+    #   for i in range(len(nums)):
+    #     if nums[i] < nums[minIndex]:
+    #       minIndex =i
+    #   nums[minIndex] *= multiplier
+    # return nums
 
-      op = 0
-      while op < k:
-        x = min(nums)
-        j = 0
-        for i in range(len(nums)):
-          if nums[i] < x:
-            x = nums[i]
-            j = i
+    # Solution 2.
+    # for _ in range(k):
+    #    x = nums.index(min(nums))
+    #    nums[x] *= multiplier
+    # return nums
 
-        op+=1
-        nums[j] *= multiplier
+    op = 0
+    while op < k:
+      x = min(nums)
+      j = 0
+      for i in range(len(nums)):
+        if nums[i] < x:
+          x = nums[i]
+          j = i
 
-      # while(op < k):
-      #   min = newNums[0]
-      #   newNums.remove(min)
-      #   newNums.append(min * multiplier)
-      #   op+=1
-      return nums
+      op+=1
+      nums[j] *= multiplier
+
+    # while(op < k):
+    #   min = newNums[0]
+    #   newNums.remove(min)
+    #   newNums.append(min * multiplier)
+    #   op+=1
+    return nums
 # nums = [2,1,3,5,6]
 # k = 5
 # multiplier = 2
 # [8,4,6,5,6]
-# a = Solution()
-# print(a.getFinalState(nums,k,multiplier))
+# print(getFinalState(nums,k,multiplier))
 
 
 '''
@@ -300,6 +246,5 @@ right = 19
 # [11,13]
 # 11, 13, 17, and 19.
 # print(closestPrimes(left,right))
-
 
 

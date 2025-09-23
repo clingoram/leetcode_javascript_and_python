@@ -1,11 +1,6 @@
-from abc import ABC, abstractmethod
-class Behavior(ABC):
+# 通用涵式
+from oop.Tortoise import Tortoise
+from oop.Lion import Lion
 
-    # abstract
-    @abstractmethod
-    def attack():
-        pass
-
-    @abstractmethod
-    def affend():
-        pass
+def move():
+    print("jofidjf")
