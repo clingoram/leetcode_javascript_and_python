@@ -1028,19 +1028,24 @@ var closetPair = function(arr1,arr2,x) {
 // [1,30];
 // console.log(closetPair(arr1,arr2,x));
 
+
+
+
 /**
- * 1980. Find Unique Binary String
+ * 166. Fraction to Recurring Decimal
  * 
- * @param {string[]} nums
+ * 參數為分子、分母，以字串資料型態回傳分數 
+ * 如果小數部分重複，則將重複部分放在括號中。
+ * 若有很多個答案，任一回傳
+ * 
+ * @param {number} numerator
+ * @param {number} denominator
  * @return {string}
  */
-var findDifferentBinaryString = function(nums) {
-  let res = "";
-  for(let i = 0;i < nums.length;i++) {
-    res += (nums[i][i] === '0' ? '1' : '0');
-  }
-  return res;
+var fractionToDecimal = function(numerator, denominator) {
+    
 };
-let nums = ["01","10"];
-// "11"
-console.log(findDifferentBinaryString(nums));
+let numerator = 1, denominator = 2;
+// "0.5"
+// console.log(fractionToDecimal(numerator,denominator));
+
