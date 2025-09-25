@@ -1,8 +1,14 @@
+# 陸龜
 from oop.Animal import Animal
 
 class Tortoise(Animal):
+
+    # class variable
+    # a property of the class itself.
+    specice = "Spurred tortoise"
     
     def __init__(self, name, age, food,speciceType:str):
+        # instance variable.Unique to each instance
         super().__init__(name, age, food)
         self.speciceType = speciceType
 

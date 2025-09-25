@@ -31,6 +31,7 @@ greek.hibernation()
 greek.environment()
 greek.attack()
 greek.affend()
+print(greek.specice)
 
 # lion = Lion("獅子","未知","肉食")
 # lion.eat()

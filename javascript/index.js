@@ -1,4 +1,5 @@
 // debugger
+import { format } from 'node:path';
 import {ExecutionTimer} from './time.js';
 import assert from 'node:assert/strict';
 
@@ -1027,9 +1028,6 @@ var closetPair = function(arr1,arr2,x) {
 // let arr1 = [1,4,5,7],arr2 = [10,20,30,40],x = 32; 
 // [1,30];
 // console.log(closetPair(arr1,arr2,x));
-
-
-
 
 /**
  * 166. Fraction to Recurring Decimal
