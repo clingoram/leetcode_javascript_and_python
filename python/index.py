@@ -32,6 +32,7 @@ greek.environment()
 greek.attack()
 greek.affend()
 print(greek.specice)
+print(greek.avgWeight(7,5))
 
 # lion = Lion("獅子","未知","肉食")
 # lion.eat()

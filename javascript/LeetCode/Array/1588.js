@@ -69,6 +69,17 @@ var sumOddLengthSubarrays = function (arr) {
         }
     }
     return count;
+
+    // solution 2.
+    // let ans = 0;
+    // for(let i = 0;i < arr.length;++i) {
+    //     let currentSum = 0;
+    //     for(let j = i;j < arr.length;++j) {
+    //         currentSum += arr[j];
+    //         ans += (j - i + 1) % 2 === 1 ? currentSum : 0;
+    //     }
+    // }
+    // return ans;
 };
 const arr = [1, 4, 2, 5, 3];
 console.log(sumOddLengthSubarrays(arr));

@@ -30,6 +30,9 @@ class Tortoise(Animal):
             except NameError:
                 print("eror")
 
+    def avgWeight(self,*args):
+        return sum(args) / 2
+    
     # 繼承、覆寫
     def hibernation(self):
         return super().hibernation()
