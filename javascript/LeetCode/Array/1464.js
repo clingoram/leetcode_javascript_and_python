@@ -59,6 +59,15 @@ var maxProduct = function (nums) {
 
     return (lastNumber - 1) * (secondLastNumber - 1);
 
+    // solution 2.
+    // 取得第一、第二大value，並將該陣列做切割…只取前兩個
+    // let sortNums = nums.sort((a,b) => b - a).slice(0,2);
+    // // 第一大元素
+    // let i = sortNums[0];
+    // // 第二大元素
+    // let j = sortNums[1];
+    // return (i - 1) * (j - 1);
+
 };
 const nums = [1, 5, 4, 5];
 // return 16 
