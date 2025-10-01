@@ -1,4 +1,5 @@
 // debugger
+import { format } from 'node:path';
 import {ExecutionTimer} from './time.js';
 import assert from 'node:assert/strict';
 
@@ -1028,3 +1029,20 @@ var closetPair = function(arr1,arr2,x) {
 // [1,30];
 // console.log(closetPair(arr1,arr2,x));
 
+/**
+ * 166. Fraction to Recurring Decimal
+ * 
+ * 參數為分子、分母，以字串資料型態回傳分數 
+ * 如果小數部分重複，則將重複部分放在括號中。
+ * 若有很多個答案，任一回傳
+ * 
+ * @param {number} numerator
+ * @param {number} denominator
+ * @return {string}
+ */
+var fractionToDecimal = function(numerator, denominator) {
+    
+};
+let numerator = 1, denominator = 2;
+// "0.5"
+// console.log(fractionToDecimal(numerator,denominator));

@@ -1,16 +1,18 @@
-from oop.Animals import Animals
+# 陸龜
+from oop.Animal import Animal
 
-class Tortoises(Animals):
+class Tortoise(Animal):
+
+    # class variable
+    # a property of the class itself.
+    specice = "Spurred tortoise"
     
     def __init__(self, name, age, food,speciceType:str):
+        # instance variable.Unique to each instance
         super().__init__(name, age, food)
         self.speciceType = speciceType
 
-    def eat(self):
-        return super().eat()
     
-    
-    # 覆寫父類別的方法
     def environment(self):
         '''
         環境
@@ -28,8 +30,16 @@ class Tortoises(Animals):
             except NameError:
                 print("eror")
 
+    def avgWeight(self,*args):
+        return sum(args) / 2
+    
+    # 繼承、覆寫
     def hibernation(self):
-        '''
-        冬眠
-        '''
-        print("if it's really cold")
+        return super().hibernation()
+    
+    # 抽象
+    def attack(self):
+        print("咬，但不太會發生")
+    
+    def affend(self):
+        print("縮進殼內")
