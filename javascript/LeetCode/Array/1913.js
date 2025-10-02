@@ -48,9 +48,20 @@ var maxProductDifference = function (nums) {
   // return (max[0] * max[1]) - (min[0] * min[1]);
 
   // solution 2.Runtime took 100 ms
-  nums.sort((a, b) => a - b);
-  let length = nums.length;
-  return (nums[length - 1] * nums[length - 2]) - (nums[0] * nums[1]);
+  // nums.sort((a, b) => a - b);
+  // let length = nums.length;
+  // return (nums[length - 1] * nums[length - 2]) - (nums[0] * nums[1]);
+
+
+  // solution 3.Update in 2025/10/2.Runtime took 73 ms.
+  // pair a = 兩個最大數; pair b = 兩個最小數
+  // sort 由大至小
+  nums.sort((a,b) => b - a);
+  // 取得第一組兩個最大數並相乘
+  let pairA = nums.slice(0,2).reduce((acc, curr) => acc * curr, 1);
+  // 取得最後面兩個最小數並相乘
+  let pairB = nums.slice(nums.length - 2,nums.length).reduce((acc, curr) => acc * curr, 1);
+  return Math.abs(pairA - pairB);
 };
 const nums = [5, 6, 2, 7, 4];
 // 34 => (6*7)-(2*4)=34
