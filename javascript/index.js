@@ -1048,34 +1048,33 @@ let numerator = 1, denominator = 2;
 // console.log(fractionToDecimal(numerator,denominator));
 
 /**
- * 1021. Remove Outermost Parentheses
+ * 2315. Count Asterisks
  * 
+ * 給一個字串，字串中可能會有"|"和"*"，找出字串中被一組 | 包住的連續 ** 有幾個
  * @param {string} s
- * @return {string}
+ * @return {number}
  */
-var removeOuterParentheses = function(s) {
-  // () 須相等數量，才能變成一對
+var countAsterisks = function(s) {
+  // 須判斷字串中是否有"*"符號
+  // 拆成陣列，計算一組"|"中有幾個連續"*"
   let splitS = s.split("");
-  let res = "";
-  let count = 1;
-  for(let i = 1; i < splitS.length;++i) {
-    if(splitS[i] === "("){
-      count++;
-      if(count > 1){
-        res += "(";
+  let ans = 0;
+  let pairs = false;
+  for(let i = 0;i < splitS.length;++i) {
+    if(splitS[i] === "|"){
+      if(pairs){
+        pairs = true;
+        continue;
+      }else{
+        pairs = false;
       }
-    }else{
-      if(count > 1){
-        res += ")";
-      }
-      count--;
     }
+
   }
-  return res;
+  return ans;
 };
-// let s = "(()())(())"
-// "()()()"
-let s = "(()())(())(()(()))";
-// "()()()()(())"
-// "(()()) (())(()(()))" => (()())
-console.log(removeOuterParentheses(s));
+// let s = "l|*e*et|c**o|*de|"
+// Output: 2
+let s = "yo|uar|e**|b|e***au|tifu|l";
+// 5
+console.log(countAsterisks(s))
