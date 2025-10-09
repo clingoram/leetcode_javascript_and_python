@@ -1047,34 +1047,3 @@ let numerator = 1, denominator = 2;
 // "0.5"
 // console.log(fractionToDecimal(numerator,denominator));
 
-/**
- * 2315. Count Asterisks
- * 
- * 給一個字串，字串中可能會有"|"和"*"，找出字串中被一組 | 包住的連續 ** 有幾個
- * @param {string} s
- * @return {number}
- */
-var countAsterisks = function(s) {
-  // 須判斷字串中是否有"*"符號
-  // 拆成陣列，計算一組"|"中有幾個連續"*"
-  let splitS = s.split("");
-  let ans = 0;
-  let pairs = false;
-  for(let i = 0;i < splitS.length;++i) {
-    if(splitS[i] === "|"){
-      if(pairs){
-        pairs = true;
-        continue;
-      }else{
-        pairs = false;
-      }
-    }
-
-  }
-  return ans;
-};
-// let s = "l|*e*et|c**o|*de|"
-// Output: 2
-let s = "yo|uar|e**|b|e***au|tifu|l";
-// 5
-console.log(countAsterisks(s))
