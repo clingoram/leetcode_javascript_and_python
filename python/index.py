@@ -265,3 +265,4 @@ def replaceDigits(s: str) -> str:
 s = "a1c1e1"
 # Output: "abcdef"
 print(replaceDigits(s))
+
