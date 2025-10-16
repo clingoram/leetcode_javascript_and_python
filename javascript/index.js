@@ -1047,3 +1047,5 @@ let numerator = 1, denominator = 2;
 // "0.5"
 // console.log(fractionToDecimal(numerator,denominator));
 
+
+console.log(sumDivisibleByK(nums,k));
