@@ -21,13 +21,13 @@ from collections import Counter
 
 # oop
 # from file name(module) import the class.
-# from oop.Animal import Animal
-# from oop.Tortoise import Tortoise
-# from oop.Lion import Lion
-# from oop.Behavior import move
+from oop.Animal import Animal
+from oop.Tortoise import Tortoise
+from oop.Lion import Lion
+from oop.Behavior import move
 
-# greek = Tortoise("福氣",7,"veggie","地中海型陸龜")
-# greek.eat()
+greek = Tortoise("福氣",7,"veggie","地中海型陸龜")
+greek.eat()
 # greek.hibernation()
 # greek.environment()
 # greek.attack()
