@@ -13,7 +13,7 @@ class Tortoise(Animal):
         self.speciceType = speciceType
 
     def eat(self):
-        cant = ["草酸高食物","糖份高，例如水果"]
+        cant = ["草酸高食物","糖份高，例如水果","人類的食物"]
         
         print(f"{self.food}，但有些不適合吃")
     
