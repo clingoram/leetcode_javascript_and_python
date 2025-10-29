@@ -1047,3 +1047,24 @@ let numerator = 1, denominator = 2;
 // "0.5"
 // console.log(fractionToDecimal(numerator,denominator));
 
+function partlist(arr) {
+  // divide a list (an array) of at least two elements into two non-empty parts.
+  // Elements of a pair must be in the same order as in the original array.
+  let result = [];
+  // 切成兩個元素
+  // front多一個字，end則少一個字
+  let front = arr[0];
+  let original = arr.join(" ");
+  // console.log(original)
+  let inside = [];
+  for(let i = 0;i < arr.length;++i) {
+    
+    // inside[i] = original[i];
+    // result.push(inside)
+  }
+  console.log(result)
+}
+let arr = ["I", "wish", "I", "hadn't", "come"];
+// let expect = [["I", "wish I hadn't come"], ["I wish", "I hadn't come"], ["I wish I", "hadn't come"], ["I wish I hadn't", "come"]]
+// console.log(assert.deepEqual(partlist(arr),expect));
+console.log(partlist(arr));
