@@ -26,8 +26,8 @@ from oop.Tortoise import Tortoise
 from oop.Lion import Lion
 from oop.Behavior import move
 
-greek = Tortoise("福氣",7,"veggie","地中海型陸龜")
-greek.eat()
+# greek = Tortoise("福氣",7,"veggie","地中海型陸龜")
+# greek.eat()
 # greek.hibernation()
 # greek.environment()
 # greek.attack()
@@ -267,3 +267,19 @@ s = "a1c1e1"
 # Output: "abcdef"
 # print(replaceDigits(s))
 
+def getSneakyNumbers(nums: List[int]) -> List[int]:
+  '''
+  3289. The Two Sneaky Numbers of Digitville
+  
+  參數為數值陣列，回傳元素出現次數大於2的元素。回傳的陣列每個必須是唯一值
+  '''
+  ans = []
+
+  return ans
+nums = [0,1,1,0]
+# [0,1]
+# print(getSneakyNumbers(nums))
+
+a = int(input("2 numbers"))
+
+print("A is:",a)
