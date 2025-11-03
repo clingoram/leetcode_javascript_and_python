@@ -1049,33 +1049,3 @@ let numerator = 1, denominator = 2;
 
 
 
-/**
- * 3718. Smallest Missing Multiple of K
- * 
- * 取得能被k整除且是所有能被k整除的最小數且不在nums中的元素並回傳
- * 
- * @param {number[]} nums
- * @param {number} k
- * @return {number}
- */
-var missingMultiple = function(nums, k) {
- let divisibleByK = [];
- let ans = 0;
- for(let i = 1;i <= 5;++i) {
-    divisibleByK.push(i*k);
- }
- for(let i = 0;i < divisibleByK.length;++i) {
-    if(!nums.includes(divisibleByK[i])){
-        ans = divisibleByK[i];
-        break;
-    }
- }
- return ans;
-};
-// let nums = [1,4,7,10,15], k = 5;
-// 5
-// let nums = [8,2,3,4,6], k = 2;
-// 10
-let nums = [99],k = 99;
-// 198
-console.log(missingMultiple(nums,k));
