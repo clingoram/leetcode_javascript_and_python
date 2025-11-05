@@ -279,7 +279,3 @@ def getSneakyNumbers(nums: List[int]) -> List[int]:
 nums = [0,1,1,0]
 # [0,1]
 # print(getSneakyNumbers(nums))
-
-a = int(input("2 numbers"))
-
-print("A is:",a)
