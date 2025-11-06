@@ -266,16 +266,3 @@ def replaceDigits(s: str) -> str:
 s = "a1c1e1"
 # Output: "abcdef"
 # print(replaceDigits(s))
-
-def getSneakyNumbers(nums: List[int]) -> List[int]:
-  '''
-  3289. The Two Sneaky Numbers of Digitville
-  
-  參數為數值陣列，回傳元素出現次數大於2的元素。回傳的陣列每個必須是唯一值
-  '''
-  ans = []
-
-  return ans
-nums = [0,1,1,0]
-# [0,1]
-# print(getSneakyNumbers(nums))
