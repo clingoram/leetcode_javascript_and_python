@@ -1071,9 +1071,43 @@ var findXSum = function(nums, k, x) {
 	}
 
 };
-let nums = [1,1,2,2,3,4,2,3], k = 6, x = 2;
+// let nums = [1,1,2,2,3,4,2,3], k = 6, x = 2;
 // [6,10,12]
 // For subarray [1, 1, 2, 2, 3, 4], only elements 1 and 2 will be kept in the resulting array. Hence, answer[0] = 1 + 1 + 2 + 2.
 // For subarray [1, 2, 2, 3, 4, 2], only elements 2 and 4 will be kept in the resulting array. Hence, answer[1] = 2 + 2 + 2 + 4. Note that 4 is kept in the array since it is bigger than 3 and 1 which occur the same number of times.
 // For subarray [2, 2, 3, 4, 2, 3], only elements 2 and 3 are kept in the resulting array. Hence, answer[2] = 2 + 2 + 2 + 3 + 3.
-console.log(findXSum(nums,k,x));
+// console.log(findXSum(nums,k,x));
+
+
+/**
+ * 2169. Count Operations to Obtain Zero
+ * 
+ * 一次操作中，若nums1 >= nums2，則nums1 = nums1 - nums2，否則nums2 = nums1 - nums2
+ * 計算要幾次才能使得nums1 = 0 or num2 = 0
+ * 
+ * @param {number} num1
+ * @param {number} num2
+ * @return {number}
+ */
+var countOperations = function(num1, num2) {
+    let ans = 0;
+    while(num1 !== 0 || num2 !== 0){
+      if(num1 > num2){
+        num1 = num1 - num2;
+        ans++;
+      }else{
+        num2 = num1 - num2;
+        ans++;
+      }
+    }
+    return ans;
+};
+let num1 = 2, num2 = 3
+// Output: 3
+// Explanation: 
+// - Operation 1: num1 = 2, num2 = 3. Since num1 < num2, we subtract num1 from num2 and get num1 = 2, num2 = 3 - 2 = 1.
+// - Operation 2: num1 = 2, num2 = 1. Since num1 > num2, we subtract num2 from num1.
+// - Operation 3: num1 = 1, num2 = 1. Since num1 == num2, we subtract num2 from num1.
+// Now num1 = 0 and num2 = 1. Since num1 == 0, we do not need to perform any further operations.
+// So the total number of operations required is 3.
+console.log(countOperations(num1,num2))
