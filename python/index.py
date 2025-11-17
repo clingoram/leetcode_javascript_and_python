@@ -9,6 +9,7 @@ python -V
 """
 from math import sqrt
 from typing import List
+from collections import Counter
 
 # from numpy import diff
 # module
@@ -25,14 +26,14 @@ from oop.Tortoise import Tortoise
 from oop.Lion import Lion
 from oop.Behavior import move
 
-greek = Tortoise("福氣",7,"veggie","地中海型陸龜")
-greek.eat()
-greek.hibernation()
-greek.environment()
-greek.attack()
-greek.affend()
-print(greek.specice)
-print(greek.avgWeight(7,5))
+# greek = Tortoise("福氣",7,"veggie","地中海型陸龜")
+# greek.eat()
+# greek.hibernation()
+# greek.environment()
+# greek.attack()
+# greek.affend()
+# print(greek.specice)
+# print(greek.avgWeight(7,5))
 
 # lion = Lion("獅子","未知","肉食")
 # lion.eat()
@@ -250,3 +251,18 @@ right = 19
 # print(closestPrimes(left,right))
 
 
+def replaceDigits(s: str) -> str:
+  res = ""
+  for i in range(len(s)):
+    prev = s[i - 1]
+    current = s[i]
+
+    if i % 2 != 0:
+      res += chr(ord(prev) + int(current)) 
+    else:
+      res += s[i]
+  
+  return res
+s = "a1c1e1"
+# Output: "abcdef"
+# print(replaceDigits(s))

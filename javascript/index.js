@@ -1046,3 +1046,43 @@ var fractionToDecimal = function(numerator, denominator) {
 let numerator = 1, denominator = 2;
 // "0.5"
 // console.log(fractionToDecimal(numerator,denominator));
+
+
+
+/**
+ * 3318. Find X-Sum of All K-Long Subarrays I
+ * 
+ * 計算每個元素出現次數但只保留出現次數 = x 次的元素，若有超過2個元素，則只保留元素較大的那個
+ * 以陣列型態計算連續子陣列元素總和
+ * 
+ * @param {number[]} nums
+ * @param {number} k
+ * @param {number} x
+ * @return {number[]}
+ */
+var findXSum = function(nums, k, x) {
+	// 將nums切成長度 = k的陣列，並計算在該陣列裡面有幾個元素出現次數 = x的
+	// 最後將符合的加總，並組成新陣列，形成元素i
+  let res = [];
+	// let map = new Map();
+	// for(let i = 0;i < k;++i) {
+	// 	map.has(nums[i]) ? map.set(nums[i],map.get(nums[i]) + 1) : map.set(nums[i],1);
+	// }
+  let i = 0;
+  while(i < k){
+    let sub = nums[i];
+    console.log(sub);
+    i++;
+  }
+  // for(let i = 0;i < k;++i) {
+  //   console.log(nums[i])
+  // }
+
+};
+// let nums = [1,1,2,2,3,4,2,3], k = 6, x = 2;
+// [6,10,12]
+// For subarray [1, 1, 2, 2, 3, 4], only elements 1 and 2 will be kept in the resulting array. Hence, answer[0] = 1 + 1 + 2 + 2.
+// For subarray [1, 2, 2, 3, 4, 2], only elements 2 and 4 will be kept in the resulting array. Hence, answer[1] = 2 + 2 + 2 + 4. Note that 4 is kept in the array since it is bigger than 3 and 1 which occur the same number of times.
+// For subarray [2, 2, 3, 4, 2, 3], only elements 2 and 3 are kept in the resulting array. Hence, answer[2] = 2 + 2 + 2 + 3 + 3.
+// console.log(findXSum(nums,k,x));
+
