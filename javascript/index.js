@@ -1086,3 +1086,32 @@ var findXSum = function(nums, k, x) {
 // For subarray [2, 2, 3, 4, 2, 3], only elements 2 and 3 are kept in the resulting array. Hence, answer[2] = 2 + 2 + 2 + 3 + 3.
 // console.log(findXSum(nums,k,x));
 
+/**
+ * 1015. Smallest Integer Divisible by K
+ * 
+ * 找出最小能被k整除了數字，且該數字只有1位數
+ * @param {number} k
+ * @return {number}
+ */
+var smallestRepunitDivByK = function(k) {
+    
+};
+let k = 2;
+// -1
+// console.log(smallestRepunitDivByK(k));
+
+/**
+ * 69. Sqrt(x)
+ * 
+ * @param {number} x
+ * @return {number}
+ */
+var mySqrt = function(x) {
+    // 不能使用內建的pow() or sqrt()
+    // rounded down to the nearest integer.
+
+};
+let x = 8;
+// 2
+// console.log(mySqrt(x));
+
