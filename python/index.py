@@ -268,15 +268,3 @@ s = "a1c1e1"
 # print(replaceDigits(s))
 
 
-def add(x:int):
-  return x + 3
-
-def sub(a:int):
-  return a - 1
-
-n = {
-  "add": add,
-  "sub": sub
-}
-print(n["add"](5))
-print(n["sub"](6))
