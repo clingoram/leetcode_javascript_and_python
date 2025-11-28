@@ -268,3 +268,6 @@ s = "a1c1e1"
 # print(replaceDigits(s))
 
 
+a = [12,6,3]
+b = map(lambda x: x * 2, a)
+print(list(b))
