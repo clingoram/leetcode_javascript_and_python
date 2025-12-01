@@ -1096,7 +1096,7 @@ var findXSum = function(nums, k, x) {
 var smallestRepunitDivByK = function(k) {
     
 };
-let k = 2;
+// let k = 2;
 // -1
 // console.log(smallestRepunitDivByK(k));
 
@@ -1115,3 +1115,23 @@ let x = 8;
 // 2
 // console.log(mySqrt(x));
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var containsNearbyDuplicate = function(nums, k) {
+    // i & j => nums[i] == nums[j] & abs(i - j) <= k.
+    // nums[i]跟nums[j]一樣
+    let map = new Map();
+    for(let i = 0;i < nums.length;++i){
+      if(map.has(nums[i]) && i - map.get(nums[i]) <= k){
+        return true
+      }
+      map.set(nums[i],i);
+    }
+    return false;
+};
+let nums = [1,2,3,1,2,3], k = 2
+ // false
+console.log(containsNearbyDuplicate(nums,k))
