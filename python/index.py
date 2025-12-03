@@ -269,5 +269,5 @@ s = "a1c1e1"
 
 
 a = [12,6,3]
-b = map(lambda x: x * 2, a)
+b = map(str,a)
 print(list(b))
