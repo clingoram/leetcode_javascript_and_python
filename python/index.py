@@ -267,7 +267,8 @@ s = "a1c1e1"
 # Output: "abcdef"
 # print(replaceDigits(s))
 
-
-a = [12,6,3]
-b = map(str,a)
-print(list(b))
+def startswith(w):
+  return w.startswith("a")
+li = ['apple','orange','pineapple','grape']
+res = filter(startswith,li)
+print(list(res))
