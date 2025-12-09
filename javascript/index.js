@@ -1114,3 +1114,54 @@ var mySqrt = function(x) {
 let x = 8;
 // 2
 // console.log(mySqrt(x));
+
+
+
+/**
+ * 3583. Count Special Triplets
+ * 
+ * special triplet = index i,j,k
+ * 0 <= i < j < k < nums.length
+ * nums[i] === nums[j] * 2
+ * nums[k] === nums[j] * 2
+ * return it modulo 10的9次方 + 7.
+ * 
+ * @param {number[]} nums
+ * @return {number}
+ */
+var specialTriplets = function(nums) {
+    let ans = 0;
+    // j as the middle of the triplet.
+    // For each j, you only need:
+    // how many values equal to 2 * nums[j] appear before j
+    // how many appear after j
+    // Then the contribution from index j is just:
+    // leftCount * rightCount
+    // let j = Math.floor(nums[nums.length % 2 ]);
+    // // console.log(j)
+    // for(let i = 0;i < nums.length;++i) {
+
+    // }
+
+    let left = new Map();
+    let right = new Map();
+    for(let i = 0;i < nums.length;++i) {
+      
+    }
+};
+let nums = [8,4,2,8,4];
+/**
+ * 2
+ * 
+ * There are exactly two special triplets:
+ * (i, j, k) = (0, 1, 3)
+ * nums[0] = 8, nums[1] = 4, nums[3] = 8
+ * nums[0] = nums[1] * 2 = 4 * 2 = 8
+ * nums[3] = nums[1] * 2 = 4 * 2 = 8
+ * 
+ * (i, j, k) = (1, 2, 4)
+ * nums[1] = 4, nums[2] = 2, nums[4] = 4
+ * nums[1] = nums[2] * 2 = 2 * 2 = 4
+ * nums[4] = nums[2] * 2 = 2 * 2 = 4
+ */
+console.log(specialTriplets(nums));
