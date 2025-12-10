@@ -1111,7 +1111,7 @@ var mySqrt = function(x) {
     // rounded down to the nearest integer.
 
 };
-let x = 8;
+// let x = 8;
 // 2
 // console.log(mySqrt(x));
 
@@ -1143,11 +1143,20 @@ var specialTriplets = function(nums) {
 
     // }
 
-    let left = new Map();
-    let right = new Map();
+    /**
+     * j = middle index
+     * 在j之前，檢查nums[i] === nums[j] * 2 的有幾個
+     * 在j之後，檢查nums[k] === nums[j] * 2 的有幾個
+     */
+    // let left = new Map();
+    // let right = new Map();
+    let j = Math.round(nums.length % 2);
     for(let i = 0;i < nums.length;++i) {
-      
+      if(nums[i] === nums[j] * 2 && i < j){
+        ans++;
+      }
     }
+    console.log(ans)
 };
 let nums = [8,4,2,8,4];
 /**
@@ -1164,4 +1173,43 @@ let nums = [8,4,2,8,4];
  * nums[1] = nums[2] * 2 = 2 * 2 = 4
  * nums[4] = nums[2] * 2 = 2 * 2 = 4
  */
-console.log(specialTriplets(nums));
+// console.log(specialTriplets(nums));
+
+
+/**
+ * 1779. Find Nearest Point That Has the Same X or Y Coordinate
+ * 
+ * x & y = current location
+ * A point is valid if it shares the same x-coordinate or the same y-coordinate as your location.
+ * 沒有回傳-1
+ * 
+ * The Manhattan distance between two points (x1, y1) and (x2, y2) is abs(x1 - x2) + abs(y1 - y2).
+ * 
+ * @param {number} x
+ * @param {number} y
+ * @param {number[][]} points
+ * @return {number}
+ */
+var nearestValidPoint = function(x, y, points) {
+
+  // abs(x-validPoint[0]) or abs(y-validPoint[1]) .
+  let totalDistance = x + y;
+  let ans = [];
+  for(const p of points) {
+    let prev = parseInt(p[0]),next = parseInt(p[1]);
+    if(prev === x || next === y){
+      let distance = Math.abs(x - prev) + Math.abs(y - next);
+      ans.push(distance);
+    }
+
+  }
+  console.log(ans)
+};
+let x = 3, y = 4, points = [[1,2],[3,1],[2,4],[2,3],[4,4]];
+// 2
+// Of all the points, only [3,1], [2,4] and [4,4] are valid. 
+// Of the valid points, [2,4] and [4,4] have the smallest Manhattan distance from your current location, with a distance of 1. 
+// [2,4] has the smallest index, so return 2.
+// let x = 3, y = 4, points = [[3,4]];
+// 0
+console.log(nearestValidPoint(x,y,points));
