@@ -284,4 +284,17 @@ x = 3
 y = 4
 points = [[1,2],[3,1],[2,4],[2,3],[4,4]]
 # 2
-print(c.nearestValidPoint(x,y,points))
+# print(c.nearestValidPoint(x,y,points))
+
+def showResult(func):
+  def wrap():
+    print("run this one first")
+    func()
+    print("run this at the end")
+  return wrap
+
+@showResult
+def say():
+  print("then run this function")
+
+say()
