@@ -1158,7 +1158,7 @@ var specialTriplets = function(nums) {
     }
     console.log(ans)
 };
-let nums = [8,4,2,8,4];
+// let nums = [8,4,2,8,4];
 /**
  * 2
  * 
@@ -1175,6 +1175,28 @@ let nums = [8,4,2,8,4];
  */
 // console.log(specialTriplets(nums));
 
-
-
-
+/**
+ * 2119. A Number After a Double Reversal
+ * 
+ * 將參數nums反轉2次後，檢查是否還是跟原參數一樣
+ * @param {number} num
+ * @return {boolean}
+ */
+var isSameAfterReversals = function(num) {
+  // 可能遇到的狀況：數字反轉後，前面是0
+    let countReverseTimes = 0;
+    // let nStr = 0;
+    let copyNum = num;
+    let toStr = num.toString().split("");
+    for(let i = 0;i < toStr.length;++i) {
+      if(countReverseTimes !== 2){
+        toStr = parseInt(toStr.reverse().join(""));
+        countReverseTimes++;
+      }
+    }
+    console.log(toStr)
+    return toStr === copyNum;
+};
+let num = 526;
+// false
+console.log(isSameAfterReversals(num));
