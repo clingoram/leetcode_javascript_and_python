@@ -1100,22 +1100,6 @@ var smallestRepunitDivByK = function(k) {
 // -1
 // console.log(smallestRepunitDivByK(k));
 
-/**
- * 69. Sqrt(x)
- * 
- * @param {number} x
- * @return {number}
- */
-var mySqrt = function(x) {
-    // 不能使用內建的pow() or sqrt()
-    // rounded down to the nearest integer.
-
-};
-// let x = 8;
-// 2
-// console.log(mySqrt(x));
-
-
 
 /**
  * 3583. Count Special Triplets
@@ -1175,28 +1159,3 @@ var specialTriplets = function(nums) {
  */
 // console.log(specialTriplets(nums));
 
-/**
- * 2119. A Number After a Double Reversal
- * 
- * 將參數nums反轉2次後，檢查是否還是跟原參數一樣
- * @param {number} num
- * @return {boolean}
- */
-var isSameAfterReversals = function(num) {
-  // 可能遇到的狀況：數字反轉後，前面是0
-    let countReverseTimes = 0;
-    // let nStr = 0;
-    let copyNum = num;
-    let toStr = num.toString().split("");
-    for(let i = 0;i < toStr.length;++i) {
-      if(countReverseTimes !== 2){
-        toStr = parseInt(toStr.reverse().join(""));
-        countReverseTimes++;
-      }
-    }
-    console.log(toStr)
-    return toStr === copyNum;
-};
-let num = 526;
-// false
-console.log(isSameAfterReversals(num));
