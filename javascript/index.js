@@ -1086,3 +1086,76 @@ var findXSum = function(nums, k, x) {
 // For subarray [2, 2, 3, 4, 2, 3], only elements 2 and 3 are kept in the resulting array. Hence, answer[2] = 2 + 2 + 2 + 3 + 3.
 // console.log(findXSum(nums,k,x));
 
+/**
+ * 1015. Smallest Integer Divisible by K
+ * 
+ * 找出最小能被k整除了數字，且該數字只有1位數
+ * @param {number} k
+ * @return {number}
+ */
+var smallestRepunitDivByK = function(k) {
+    
+};
+// let k = 2;
+// -1
+// console.log(smallestRepunitDivByK(k));
+
+
+/**
+ * 3583. Count Special Triplets
+ * 
+ * special triplet = index i,j,k
+ * 0 <= i < j < k < nums.length
+ * nums[i] === nums[j] * 2
+ * nums[k] === nums[j] * 2
+ * return it modulo 10的9次方 + 7.
+ * 
+ * @param {number[]} nums
+ * @return {number}
+ */
+var specialTriplets = function(nums) {
+    let ans = 0;
+    // j as the middle of the triplet.
+    // For each j, you only need:
+    // how many values equal to 2 * nums[j] appear before j
+    // how many appear after j
+    // Then the contribution from index j is just:
+    // leftCount * rightCount
+    // let j = Math.floor(nums[nums.length % 2 ]);
+    // // console.log(j)
+    // for(let i = 0;i < nums.length;++i) {
+
+    // }
+
+    /**
+     * j = middle index
+     * 在j之前，檢查nums[i] === nums[j] * 2 的有幾個
+     * 在j之後，檢查nums[k] === nums[j] * 2 的有幾個
+     */
+    // let left = new Map();
+    // let right = new Map();
+    let j = Math.round(nums.length % 2);
+    for(let i = 0;i < nums.length;++i) {
+      if(nums[i] === nums[j] * 2 && i < j){
+        ans++;
+      }
+    }
+    console.log(ans)
+};
+// let nums = [8,4,2,8,4];
+/**
+ * 2
+ * 
+ * There are exactly two special triplets:
+ * (i, j, k) = (0, 1, 3)
+ * nums[0] = 8, nums[1] = 4, nums[3] = 8
+ * nums[0] = nums[1] * 2 = 4 * 2 = 8
+ * nums[3] = nums[1] * 2 = 4 * 2 = 8
+ * 
+ * (i, j, k) = (1, 2, 4)
+ * nums[1] = 4, nums[2] = 2, nums[4] = 4
+ * nums[1] = nums[2] * 2 = 2 * 2 = 4
+ * nums[4] = nums[2] * 2 = 2 * 2 = 4
+ */
+// console.log(specialTriplets(nums));
+

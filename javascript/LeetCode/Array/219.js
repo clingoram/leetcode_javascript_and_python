@@ -76,6 +76,18 @@ var containsNearbyDuplicate = function (nums, k) {
         toMap.set(nums[i], i);
     }
     return false;
+
+    // solution 3.
+    // i & j => nums[i] == nums[j] & abs(i - j) <= k.
+    // nums[i]跟nums[j]一樣
+    // let map = new Map();
+    // for(let i = 0;i < nums.length;++i){
+    //   if(map.has(nums[i]) && i - map.get(nums[i]) <= k){
+    //     return true
+    //   }
+    //   map.set(nums[i],i);
+    // }
+    // return false;
 };
 const nums = [1, 2, 3, 1], k = 3; // return true
 //Input: nums = [1,0,1,1], k = 1 return true

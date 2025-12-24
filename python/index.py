@@ -266,3 +266,35 @@ def replaceDigits(s: str) -> str:
 s = "a1c1e1"
 # Output: "abcdef"
 # print(replaceDigits(s))
+
+class So:
+  def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
+    ans = -1
+    smallest = float('inf')
+    for i in range(0,len(points)):
+      prev = x - int(points[i][0])
+      nextOne = y - int(points[1][0])
+      if (prev * nextOne) == 0 and abs(prev + nextOne) < smallest:
+        smallest = abs(prev + nextOne)
+        ans = i
+    return ans
+
+c = So()
+x = 3
+y = 4
+points = [[1,2],[3,1],[2,4],[2,3],[4,4]]
+# 2
+# print(c.nearestValidPoint(x,y,points))
+
+def showResult(func):
+  def wrap():
+    print("run this one first")
+    func()
+    print("run this at the end")
+  return wrap
+
+@showResult
+def say():
+  print("then run this function")
+
+say()

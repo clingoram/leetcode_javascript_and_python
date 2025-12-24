@@ -238,3 +238,7 @@ def checkExist(arr:list,item:int):
 array = [1,2,3,4]
 item = 3
 checkExist(array,item)
+
+
+r = lambda a: "True" if a > 5 else "False"
+print(r(1))

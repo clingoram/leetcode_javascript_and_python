@@ -44,22 +44,37 @@
  */
 var countPartitions = function (nums) {
   // 左右皆不斷更新
-  let right = 0;
-  let left = 0;
-  // 加總後的值
-  let sum = 0;
-  // 操作次數
+  // let right = 0;
+  // let left = 0;
+  // // 加總後的值
+  // let sum = 0;
+  // // 操作次數
+  // let count = 0;
+  // for (let i = 0; i < nums.length; i++) {
+  //   sum += nums[i];
+  // }
+  // for (let i = 0; i < nums.length - 1; i++) {
+  //   left += nums[i];
+  //   // 總值 - 左邊 = 右邊
+  //   right = sum - left;
+
+  //   // 檢查兩邊是否都是偶數
+  //   if ((left % 2) === (right % 2)) {
+  //     count++;
+  //   }
+  // }
+  // return count;
+
+  // solution 2.
+  let sum = nums.reduce((a,b) => a + b);
   let count = 0;
-  for (let i = 0; i < nums.length; i++) {
-    sum += nums[i];
-  }
-  for (let i = 0; i < nums.length - 1; i++) {
+  let right = 0, left = 0;
+  for(let i = 0;i < nums.length;++i) {
+    // 左邊的元素會越來越多，右邊則會變少
     left += nums[i];
-    // 總值 - 左邊 = 右邊
     right = sum - left;
 
-    // 檢查兩邊是否都是偶數
-    if ((left % 2) === (right % 2)) {
+    if(right % 2 === 0 && left % 2 === 0){
       count++;
     }
   }
