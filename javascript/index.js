@@ -1159,18 +1159,3 @@ var specialTriplets = function(nums) {
  */
 // console.log(specialTriplets(nums));
 
-/**
- * 3074. Apple Redistribution into Boxes
- * 
- * @param {number[]} apple
- * @param {number[]} capacity
- * @return {number}
- */
-var minimumBoxes = function(apple, capacity) {
-    // sort box desc
-    capacity.sort((a,b) => a - b);
-    console.log(capacity)
-};
-let apple = [5,5,5], capacity = [2,4,2,7];
-// 4
-console.log(minimumBoxes(apple,capacity))
