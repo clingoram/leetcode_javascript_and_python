@@ -1159,3 +1159,27 @@ var specialTriplets = function(nums) {
  */
 // console.log(specialTriplets(nums));
 
+/**
+ * 3kyu - How many are smaller than me II?
+ * 
+ * @param {number[]} arr 
+ * @returns {number[]}
+ */
+function smaller(arr) {
+   // 回傳arr[i]的右邊有幾個是小於自己的
+  let ans = [];
+  for(let i = 0;i < arr.length;++i) {
+    let count = 0;
+    for(let j = i + 1;j < arr.length;j++) {
+      if(arr[i] === arr[j]){
+        continue;
+      }
+      if(arr[i] > arr[j]){
+        count++;
+      }
+     }
+     ans[i] = count;
+  }
+  return ans;
+}
+console.log(assert.equal(smaller([5, 4, 7, 9, 2, 4, 1, 4, 5, 6]), [5, 2, 6, 6, 1, 1, 0, 0, 0, 0]))
