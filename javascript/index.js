@@ -1198,4 +1198,49 @@ let s = "IceCreAm";
  * The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
  * 
  */
-console.log(reverseVowels(s));
+// console.log(reverseVowels(s));
+
+/**
+ * 66. Plus One
+ * 
+ * 參數為數值陣列，將該參數+1並以數字陣列回傳
+ * 只需要知道最後一個數字是什麼並將它+1
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function(digits) {
+  // 只需要知道最後一個數字是什麼並將它+1
+  // 若 +1 位數 >= 2，則拆開
+
+  // let toInt = parseInt(digits.join(""))+1;
+  // let splitToArray = toInt.toString().split("");
+  // let res = [];
+  // for(let i = 0;i < splitToArray.length;++i) {
+  //   res.push(parseInt(splitToArray[i]));
+  // }
+  // return res;
+
+  // let lastElePlusOne = digits[digits.length -1]+1;
+  // digits.pop()
+  // digits.push(lastElePlusOne)
+  // return digits;
+
+  let lastElePlusOne = 0;
+  let last = digits[digits.length -1];
+  if(last <= 9){
+    lastElePlusOne = (last + 1).toString().split("");
+  }else{
+    lastElePlusOne = (last + 1);
+  }
+  digits.pop();
+  digits.push(lastElePlusOne)
+  return digits;
+};
+// let digits = [1,2,3];
+//[1,2,4]
+// Explanation: The array represents the integer 123.
+// Incrementing by one gives 123 + 1 = 124.
+// Thus, the result should be [1,2,4].
+let digits = [9];
+// [1,0]
+console.log(plusOne(digits));
