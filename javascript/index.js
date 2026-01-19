@@ -2,6 +2,7 @@
 import { format } from 'node:path';
 import {ExecutionTimer} from './time.js';
 import assert from 'node:assert/strict';
+import { count } from 'node:console';
 
 /*
 22. Generate Parentheses
@@ -1158,4 +1159,44 @@ var specialTriplets = function(nums) {
  * nums[4] = nums[2] * 2 = 2 * 2 = 4
  */
 // console.log(specialTriplets(nums));
+
+
+
+/**
+ * 345. Reverse Vowels of a String
+ * 
+ * 找出所有母音（不分大小寫），其餘子音維持原位，唯獨反轉母音
+ * @param {string} s
+ * @return {string}
+ */
+var reverseVowels = function(s) {
+    let vowels = ["a","e","i","o","u","A","E","I","O","U"];
+    let splitS = s.split("");
+    // 2 pointer?
+    let j = splitS.length - 1,i = 0;
+    while(i < j){
+      if(!vowels.includes(splitS[i],i)){
+        i++;
+        continue;
+      }
+      if(!vowels.includes(splitS[j],j)){
+        j--;
+        continue;
+      }
+      let char = splitS[i];
+      splitS[i] = splitS[j];
+      splitS[j] = char;
+      i++;
+      j--;
+    }
+    return splitS.join("");
+};
+let s = "IceCreAm";
+/**
+ * Output: "AceCreIm"
+ * Explanation:
+ * The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
+ * 
+ */
+// console.log(reverseVowels(s));
 
