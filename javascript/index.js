@@ -1200,3 +1200,53 @@ let s = "IceCreAm";
  */
 // console.log(reverseVowels(s));
 
+/**
+  a - z /A - Z = 1 ~ 26
+  以陣列型態回傳元素對應/正確的字母順序有幾個
+*/
+function solve(arr){
+  // 元素字母有大小寫
+  let letterObj = generateAlphabet();
+  // console.log(letterObj)
+  let result = [];
+  for(let i = 0;i < arr.length;++i) {
+    let str = arr[i].toLocaleLowerCase().split("");
+    console.log(str)
+    for(const [key,value] of letterObj){
+      // console.log(key)
+      // if(key === str){
+
+      // }
+    }
+  }
+
+   /**
+     * 產生26個英文字母
+     * a = 26,b = 25 ....
+     * @returns obj
+     */
+    function generateAlphabet(){
+      let start = "a";
+      let end = "z";
+      let alp = new Map();
+      let range = 26;
+      let i = start.charCodeAt(0), j = end.charCodeAt(0);
+      for (; i <= j; ++i) {
+        // alp[String.fromCharCode(i)] = range--;
+        alp.set(String.fromCharCode(i),range--);
+      }
+      return alp;
+    }
+
+  // console.log(letterObj)
+};
+let arr = ["IAMDEFANDJKL","thedefgh","xyzDEFghijabc"];
+// describe("Basic tests", () => {
+//   it("Fixed tests", () => {
+//     assert.deepEqual(solve(["abode","ABc","xyzD"]),[4,3,1]);
+//     assert.deepEqual(solve(["abide","ABc","xyz"]),[4,3,0]);
+//     assert.deepEqual(solve(["IAMDEFANDJKL","thedefgh","xyzDEFghijabc"]),[6, 5, 7]);
+//     assert.deepEqual(solve(["encode","abc","xyzD","ABmD"]),[1, 3, 1, 3]);
+//   });
+// });
+console.log(solve(arr))
