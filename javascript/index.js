@@ -1201,22 +1201,30 @@ let s = "IceCreAm";
 // console.log(reverseVowels(s));
 
 /**
-  a - z /A - Z = 1 ~ 26
-  以陣列型態回傳元素對應/正確的字母順序有幾個
+ * Alphabet symmetry
+ * 
+ * 參數為有英文字母但大小寫不一定的陣列，依據26個字母順序來看：a - z /A - Z = 1 ~ 26，以陣列型態回傳元素字母與26個字母對應且字母順序正確的有幾個
+ * 
+ * EG.["abode","ABc","xyzD"]) = [4, 3, 1]
+ * 說明：
+ * a,b = 在26個順序中是1,2 且在這也是1,2;
+ * d,e = 在26個順序中是4,5 且在這也是4,5 => 總共有4個字母出現順序正確
 */
 function solve(arr){
   // 元素字母有大小寫
+  // 同一元素字串可能會有重複的字母
   let letterObj = generateAlphabet();
   // console.log(letterObj)
+  let map = new Map();
+  // let set  = new Set();
   let result = [];
-  for(let i = 0;i < arr.length;++i) {
-    let str = arr[i].toLocaleLowerCase().split("");
-    console.log(str)
-    for(const [key,value] of letterObj){
-      // console.log(key)
-      // if(key === str){
+  for(const letter of arr){
+    let set = new Set( [...letter.toLowerCase().split("")].join(''))
+    console.log(set)
+    
+    for(let i = 0;i < set.size;++i) {
+      // console.log(letter[i]);
 
-      // }
     }
   }
 
