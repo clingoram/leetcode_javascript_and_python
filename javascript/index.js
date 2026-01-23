@@ -1218,14 +1218,31 @@ function solve(arr){
   let map = new Map();
   // let set  = new Set();
   let result = [];
+  let count = 0;
+  let baseASCIICode = "A".charCodeAt();
   for(const letter of arr){
-    let set = new Set( [...letter.toLowerCase().split("")].join(''))
-    console.log(set)
-    
-    for(let i = 0;i < set.size;++i) {
-      // console.log(letter[i]);
-
+    let element = letter.toLowerCase()
+    for(let i = 0;i < element.length;++i) {
+      let ascii = element.charCodeAt(i);
+      if(ascii+1 === element.charAt(i)){
+        count++;
+        continue;
+       
+      }
+      if(count === element.length){
+        count = 0;
+      }
+      result.push(count);
     }
+    console.log(result)
+    // let set = new Set( [...letter.toLowerCase().split("")].join(''))
+    // console.log([...set].join(""))
+    // let toStrFromSet = [...set].join("");
+    
+    // for(let i = 0;i < toStrFromSet.length;++i) {
+    //   console.log(toStrFromSet[i]);
+
+    // }
   }
 
    /**
