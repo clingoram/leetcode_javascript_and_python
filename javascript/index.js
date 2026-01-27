@@ -1274,4 +1274,5 @@ let arr = ["IAMDEFANDJKL","thedefgh","xyzDEFghijabc"];
 //     assert.deepEqual(solve(["encode","abc","xyzD","ABmD"]),[1, 3, 1, 3]);
 //   });
 // });
-console.log(solve(arr))
+// console.log(solve(arr))
+
