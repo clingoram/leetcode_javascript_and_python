@@ -1171,25 +1171,44 @@ var specialTriplets = function(nums) {
  */
 var reverseVowels = function(s) {
     let vowels = ["a","e","i","o","u","A","E","I","O","U"];
-    let splitS = s.split("");
-    // 2 pointer?
-    let j = splitS.length - 1,i = 0;
-    while(i < j){
-      if(!vowels.includes(splitS[i],i)){
-        i++;
-        continue;
+    // let splitS = s.split("");
+    // let res = [];
+    // // 2 pointer?
+    // let j = s.length - 1,i = 0;
+    // while(i < j){
+    //   if(i < j && !vowels.includes(s,i)){
+    //     i++;
+    //   }
+    //   if(i < j && !vowels.includes(s,j)){
+    //     j--;
+    //   }
+    //   let char = res[i];
+    //   res[i] = res[j];
+    //   res[j] = char;
+    //   i++;
+    //   j--;
+    // }
+    // return res.join("");
+
+    let j = s.length - 1;
+    // let vowelsRev = new Map();
+    let hasVowels = [];
+
+    for(let i = 0;i < s.length;++i) {
+      if(i < j && vowels.includes(s[i])){
+        // vowelsRev.push(s[i].split("").join(""));
+        hasVowels.push(s[i]);
       }
-      if(!vowels.includes(splitS[j],j)){
-        j--;
-        continue;
-      }
-      let char = splitS[i];
-      splitS[i] = splitS[j];
-      splitS[j] = char;
-      i++;
-      j--;
+      // vowelsRev.set(i,reverse);
     }
-    return splitS.join("");
+    let reverse = hasVowels.reverse().join("");
+    // console.log(reverse)
+    let res = "";
+    for(let i = 0;i < s.length;++i) {
+      if(i < j && vowels.includes(reverse[i])){
+        
+      }
+    }
 };
 let s = "IceCreAm";
 /**
@@ -1198,7 +1217,7 @@ let s = "IceCreAm";
  * The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
  * 
  */
-// console.log(reverseVowels(s));
+console.log(reverseVowels(s));
 
 /**
  * Alphabet symmetry
@@ -1293,4 +1312,26 @@ let nums = [1,6,2,9], k = 3;
 // 2
 // Remove nums[0] = 1 and nums[3] = 9 to get nums = [6, 2].
 // Now max = 6, min = 2 and max <= min * k as 6 <= 2 * 3. Thus, the answer is 2.
-console.log(minRemoval(nums,k));
+// console.log(minRemoval(nums,k));
+
+
+/**
+ * 1653. Minimum Deletions to Make String Balanced
+ * 
+ * 參數s中只有'a' & 'b'這兩個字母。
+ * 刪除任一字母使s balanced，若不存在一對index (i,j) 使得 i < j 且 s[i] = 'b' 且 s[j] = 'a'，則s 是balanced。
+ * 回傳最小須刪除幾次才能使s balanced
+ * 
+ * @param {string} s
+ * @return {number}
+ */
+var minimumDeletions = function(s) {
+    
+};
+// let s = "aababbab";
+/*Output: 2
+Explanation: You can either:
+Delete the characters at 0-indexed positions 2 and 6 ("aababbab" -> "aaabbb"), or
+Delete the characters at 0-indexed positions 3 and 6 ("aababbab" -> "aabbbb").
+*/
+// console.log(minimumDeletions(s));
