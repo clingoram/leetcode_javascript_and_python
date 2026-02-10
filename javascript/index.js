@@ -1161,9 +1161,6 @@ var specialTriplets = function(nums) {
 // console.log(specialTriplets(nums));
 
 
-
-
-
 /**
  * Alphabet symmetry
  * 
