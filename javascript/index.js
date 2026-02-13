@@ -1250,7 +1250,7 @@ var minRemoval = function(nums, k) {
   }
   return nums.length - count;
 };
-let nums = [1,6,2,9], k = 3;
+// let nums = [1,6,2,9], k = 3;
 // 2
 // Remove nums[0] = 1 and nums[3] = 9 to get nums = [6, 2].
 // Now max = 6, min = 2 and max <= min * k as 6 <= 2 * 3. Thus, the answer is 2.
@@ -1277,3 +1277,5 @@ Delete the characters at 0-indexed positions 2 and 6 ("aababbab" -> "aaabbb"), o
 Delete the characters at 0-indexed positions 3 and 6 ("aababbab" -> "aabbbb").
 */
 // console.log(minimumDeletions(s));
+
+
