@@ -9,6 +9,7 @@
  * @return {string}
  */
 var mapWordWeights = function(words, weights) {
+    // 解法1，使用map
     // 可能遇到的狀況：key(字母)、value(數字)重複出現
     let alp = generateAlphabet();
     let sumWeights = [];
@@ -54,7 +55,30 @@ var mapWordWeights = function(words, weights) {
       }
       return alp;
     }
+
 };
+
+/**
+ * 解法2。沒有另寫涵式產生26個英文字母
+ * 此法較快
+ * 
+ * @param {*} words 
+ * @param {*} weights 
+ * @returns 
+ */
+var mapWordWeights2 = function(words, weights) {
+  let sumWeights = [];
+    
+  for (const element of words) {
+    let countLen = 0;
+    for(let i = 0;i < element.length;++i) {
+      countLen += weights[element.charCodeAt(i) - 'a'.charCodeAt()]
+    }
+    // String.fromCharCode(ascii code) => ascii code to char.
+    sumWeights.push(String.fromCharCode('z'.charCodeAt() - countLen % 26));
+  }
+  return sumWeights.join("")
+}
 let list = ["abcd","def","xyz"], weights = [5,3,12,14,1,2,3,2,10,6,6,9,7,8,7,10,8,9,6,9,9,8,3,7,7,2];
 /*
 Output: "rij"
@@ -65,3 +89,4 @@ The weight of "xyz" is 7 + 7 + 2 = 16. The result modulo 26 is 16 % 26 = 16, whi
 Thus, the string formed by concatenating the mapped characters is "rij".
 */
 console.log(mapWordWeights(list,weights));
+console.log(mapWordWeights2(list,weights));
