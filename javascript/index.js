@@ -1270,36 +1270,10 @@ var minRemoval = function(nums, k) {
 var minimumDeletions = function(s) {
     
 };
-// let s = "aababbab";
+let s = "aababbab";
 /*Output: 2
 Explanation: You can either:
 Delete the characters at 0-indexed positions 2 and 6 ("aababbab" -> "aaabbb"), or
 Delete the characters at 0-indexed positions 3 and 6 ("aababbab" -> "aabbbb").
 */
-// console.log(minimumDeletions(s));
-
-
-var mapWordWeights = function(words, weights) {
-    let sumWeights = [];
-    
-    for (const element of words) {
-      let countLen = 0;
-      for(let i = 0;i < element.length;++i) {
-        countLen += weights[element.charCodeAt(i) - 'a'.charCodeAt()]
-      }
-      // String.fromCharCode(ascii code) => ascii code to char.
-      sumWeights.push(String.fromCharCode('z'.charCodeAt() - countLen % 26));
-    }
-   return sumWeights.join("")
-
-};
-let list = ["abcd","def","xyz"], weights = [5,3,12,14,1,2,3,2,10,6,6,9,7,8,7,10,8,9,6,9,9,8,3,7,7,2];
-/*
-Output: "rij"
-Explanation:
-The weight of "abcd" is 5 + 3 + 12 + 14 = 34. The result modulo 26 is 34 % 26 = 8, which maps to 'r'.
-The weight of "def" is 14 + 1 + 2 = 17. The result modulo 26 is 17 % 26 = 17, which maps to 'i'.
-The weight of "xyz" is 7 + 7 + 2 = 16. The result modulo 26 is 16 % 26 = 16, which maps to 'j'.
-Thus, the string formed by concatenating the mapped characters is "rij".
-*/
-console.log(mapWordWeights(list,weights));
+console.log(minimumDeletions(s));
