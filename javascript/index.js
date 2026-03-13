@@ -3,6 +3,7 @@ import { format } from 'node:path';
 import {ExecutionTimer} from './time.js';
 import assert from 'node:assert/strict';
 import { count } from 'node:console';
+import { lchown } from 'node:fs';
 
 /*
 22. Generate Parentheses
@@ -1278,34 +1279,3 @@ Delete the characters at 0-indexed positions 3 and 6 ("aababbab" -> "aabbbb").
 */
 // console.log(minimumDeletions(s));
 
-/**
- * 3856. Trim Trailing Vowels
- * 
- * 移除s中後半部的母音
- *
- * @param {string} s
- * @return {string}
- */
-var trimTrailingVowels = function(s) {
-  /**
-   * 從後面開始檢查每個字元是否是母音，若是，則移除並繼續往前找直到非母音為止
-   */
-  // let halfToRemove = Math.round(s.length / 2);
-  let count = 0;
-  let result = "";
-  let vowels = "aeiou";
-  // console.log(s.slice(0,halfToRemove))
-  for(let i = s.length;i >= 0;--i) {
-    if(s[i] != "a" || s[i] != "e" || s[i] !="i" || s[i] != 'o' || s[i] != 'u'){
-      result += s;
-    }else{
-      console.log("adfdf")
-      
-    }
-  }
-  return result;
-};
-let s = "idea";
-//"id"
-// let s = "day";
-console.log(trimTrailingVowels(s));
