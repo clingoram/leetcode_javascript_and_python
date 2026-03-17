@@ -3,6 +3,7 @@ import { format } from 'node:path';
 import {ExecutionTimer} from './time.js';
 import assert from 'node:assert/strict';
 import { count } from 'node:console';
+import { lchown } from 'node:fs';
 
 /*
 22. Generate Parentheses
@@ -1161,42 +1162,120 @@ var specialTriplets = function(nums) {
 // console.log(specialTriplets(nums));
 
 
+/**
+ * Alphabet symmetry
+ * 
+ * 參數為有英文字母但大小寫不一定的陣列，依據26個字母順序來看：a - z /A - Z = 1 ~ 26，以陣列型態回傳元素字母與26個字母對應且字母順序正確的有幾個
+ * 
+ * EG.["abode","ABc","xyzD"]) = [4, 3, 1]
+ * 說明：
+ * a,b = 在26個順序中是1,2 且在這也是1,2;
+ * d,e = 在26個順序中是4,5 且在這也是4,5 => 總共有4個字母出現順序正確
+*/
+function solve(arr){
+  // 元素字母有大小寫
+  // 同一元素字串可能會有重複的字母
+  let letterObj = generateAlphabet();
+  // console.log(letterObj)
+  let map = new Map();
+  // let set  = new Set();
+  let result = [];
+  let count = 0;
+  let baseASCIICode = "A".charCodeAt();
+  for(const letter of arr){
+    let element = letter.toLowerCase()
+    for(let i = 0;i < element.length;++i) {
+      let ascii = element.charCodeAt(i);
+      if(ascii+1 === element.charAt(i)){
+        count++;
+        continue;
+       
+      }
+      if(count === element.length){
+        count = 0;
+      }
+      result.push(count);
+    }
+    console.log(result)
+    // let set = new Set( [...letter.toLowerCase().split("")].join(''))
+    // console.log([...set].join(""))
+    // let toStrFromSet = [...set].join("");
+    
+    // for(let i = 0;i < toStrFromSet.length;++i) {
+    //   console.log(toStrFromSet[i]);
+
+    // }
+  }
+
+   /**
+     * 產生26個英文字母
+     * a = 26,b = 25 ....
+     * @returns obj
+     */
+    function generateAlphabet(){
+      let start = "a";
+      let end = "z";
+      let alp = new Map();
+      let range = 26;
+      let i = start.charCodeAt(0), j = end.charCodeAt(0);
+      for (; i <= j; ++i) {
+        // alp[String.fromCharCode(i)] = range--;
+        alp.set(String.fromCharCode(i),range--);
+      }
+      return alp;
+    }
+
+  // console.log(letterObj)
+};
+let arr = ["IAMDEFANDJKL","thedefgh","xyzDEFghijabc"];
+// describe("Basic tests", () => {
+//   it("Fixed tests", () => {
+//     assert.deepEqual(solve(["abode","ABc","xyzD"]),[4,3,1]);
+//     assert.deepEqual(solve(["abide","ABc","xyz"]),[4,3,0]);
+//     assert.deepEqual(solve(["IAMDEFANDJKL","thedefgh","xyzDEFghijabc"]),[6, 5, 7]);
+//     assert.deepEqual(solve(["encode","abc","xyzD","ABmD"]),[1, 3, 1, 3]);
+//   });
+// });
+// console.log(solve(arr))
+
+var minRemoval = function(nums, k) {
+  nums.sort((a,b) => a - b);
+  let i = 0;
+  let count = 0;
+  for(let j = 0;j < nums.length;++j) {
+    // 2 pointers.i & j
+    while(nums[j] > nums[i] * k){
+      i++;
+    }
+    count = Math.max(count, j - i + 1);
+  }
+  return nums.length - count;
+};
+// let nums = [1,6,2,9], k = 3;
+// 2
+// Remove nums[0] = 1 and nums[3] = 9 to get nums = [6, 2].
+// Now max = 6, min = 2 and max <= min * k as 6 <= 2 * 3. Thus, the answer is 2.
+// console.log(minRemoval(nums,k));
+
 
 /**
- * 345. Reverse Vowels of a String
+ * 1653. Minimum Deletions to Make String Balanced
  * 
- * 找出所有母音（不分大小寫），其餘子音維持原位，唯獨反轉母音
+ * 參數s中只有'a' & 'b'這兩個字母。
+ * 刪除任一字母使s balanced，若不存在一對index (i,j) 使得 i < j 且 s[i] = 'b' 且 s[j] = 'a'，則s 是balanced。
+ * 回傳最小須刪除幾次才能使s balanced
+ * 
  * @param {string} s
- * @return {string}
+ * @return {number}
  */
-var reverseVowels = function(s) {
-    let vowels = ["a","e","i","o","u","A","E","I","O","U"];
-    let splitS = s.split("");
-    // 2 pointer?
-    let j = splitS.length - 1,i = 0;
-    while(i < j){
-      if(!vowels.includes(splitS[i],i)){
-        i++;
-        continue;
-      }
-      if(!vowels.includes(splitS[j],j)){
-        j--;
-        continue;
-      }
-      let char = splitS[i];
-      splitS[i] = splitS[j];
-      splitS[j] = char;
-      i++;
-      j--;
-    }
-    return splitS.join("");
+var minimumDeletions = function(s) {
+    
 };
-let s = "IceCreAm";
-/**
- * Output: "AceCreIm"
- * Explanation:
- * The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
- * 
- */
-// console.log(reverseVowels(s));
+// let s = "aababbab";
+/*Output: 2
+Explanation: You can either:
+Delete the characters at 0-indexed positions 2 and 6 ("aababbab" -> "aaabbb"), or
+Delete the characters at 0-indexed positions 3 and 6 ("aababbab" -> "aabbbb").
+*/
+// console.log(minimumDeletions(s));
 
