@@ -108,7 +108,7 @@ var findLongestWord = function (s, dictionary) {
  * Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
  * Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.
  *
- * Input num1 and num2 are 非負數以字串方式呈現
+ * Input num1 and num2 非負數以字串方式呈現
  * Output num1 * num2(以字串方式呈現)
  * 不能使用內建含式或直接把Input轉成數字
  * -------------------------------------------
@@ -131,21 +131,23 @@ var findLongestWord = function (s, dictionary) {
  * @return {string}
  */
 var multiply = function (num1, num2) {
+  /**
+   * 不能使用內建涵式或轉換型態
+   */
 
-  let pattern = /^[0-9]+$/;
-
-  if (!num1.match(pattern) || !num2.match(pattern) || Number(num1) === 0 || Number(num2) === 0) {
-    return;
+  let answer = Array(num1.length + num2.length).fill(0);
+  console.log(answer)
+  for(let i = num1.length - 1;i >= 0;i--){
+    
   }
-
-
-
 };
 // const num1 = "2", num2 = "3";
 // "6"
 // const num1 = "123", num2 = "456";
 // "56088"
-// console.log(multiply(num1, num2));
+const num1 = "123456789",num2 = "987654321"; 
+// "121932631112635269"
+console.log(multiply(num1, num2));
 
 
 
@@ -1264,6 +1266,7 @@ var minRemoval = function(nums, k) {
  * 參數s中只有'a' & 'b'這兩個字母。
  * 刪除任一字母使s balanced，若不存在一對index (i,j) 使得 i < j 且 s[i] = 'b' 且 s[j] = 'a'，則s 是balanced。
  * 回傳最小須刪除幾次才能使s balanced
+ * 
  * 
  * @param {string} s
  * @return {number}
