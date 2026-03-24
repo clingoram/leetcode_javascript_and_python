@@ -147,7 +147,7 @@ var multiply = function (num1, num2) {
 // "56088"
 const num1 = "123456789",num2 = "987654321"; 
 // "121932631112635269"
-console.log(multiply(num1, num2));
+// console.log(multiply(num1, num2));ㄋㄋ
 
 
 
