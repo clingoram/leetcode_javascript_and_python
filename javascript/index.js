@@ -1,9 +1,7 @@
 // debugger
-import { format } from 'node:path';
 import {ExecutionTimer} from './time.js';
 import assert from 'node:assert/strict';
 import { count } from 'node:console';
-import { lchown } from 'node:fs';
 
 /*
 22. Generate Parentheses
@@ -1259,26 +1257,4 @@ var minRemoval = function(nums, k) {
 // Now max = 6, min = 2 and max <= min * k as 6 <= 2 * 3. Thus, the answer is 2.
 // console.log(minRemoval(nums,k));
 
-
-/**
- * 1653. Minimum Deletions to Make String Balanced
- * 
- * 參數s中只有'a' & 'b'這兩個字母。
- * 刪除任一字母使s balanced，若不存在一對index (i,j) 使得 i < j 且 s[i] = 'b' 且 s[j] = 'a'，則s 是balanced。
- * 回傳最小須刪除幾次才能使s balanced
- * 
- * 
- * @param {string} s
- * @return {number}
- */
-var minimumDeletions = function(s) {
-    
-};
-// let s = "aababbab";
-/*Output: 2
-Explanation: You can either:
-Delete the characters at 0-indexed positions 2 and 6 ("aababbab" -> "aaabbb"), or
-Delete the characters at 0-indexed positions 3 and 6 ("aababbab" -> "aabbbb").
-*/
-// console.log(minimumDeletions(s));
 
