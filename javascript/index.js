@@ -1258,3 +1258,61 @@ var minRemoval = function(nums, k) {
 // console.log(minRemoval(nums,k));
 
 
+/***
+ * 890. Find and Replace Pattern
+ * 
+ * @param {string[]} words
+ * @param {string} pattern
+ * @return {string[]}
+ */
+var findAndReplacePattern = function(words, pattern) {
+  // solution 1.
+  // TC: O(n * m)
+  // let result = [];
+  // for(let i = 0;i < words.length;i++) {
+  //     if(checkEqual(words[i],pattern)){
+  //         result.push(words[i]);
+  //     }
+  // }
+  // return result;
+
+  // /**
+  // * @param {string} a
+  // * @param {string} b
+  // * @return {boolean} 
+  // */
+  // function checkEqual(a,b) {
+  //     for(let i = 0;i < a.length;i++) {
+  //         if(a.indexOf(a[i]) !== b.indexOf(b[i])){
+  //             return false;
+  //         }
+  //     }
+  //     return true;
+  // }
+
+  // solution 2.
+  // hash map
+  let result = [];
+  for(const a of words) {
+    if(checkEqual(a,pattern)){
+      result.push(a);
+    }
+    // console.log(a)
+  }
+
+  function checkEqual(a,b){
+    let map = new Map();
+    for(let i = 0;i < a.length;++i) {
+      if(!map.has(a[i])){
+        map.set(i,a[i]);
+      }
+      if(map.get(a[i]) ){
+
+      }
+    }
+
+  }
+};
+let word = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb";
+// ["mee","aqq"]
+console.log(findAndReplacePattern(word,pattern));
