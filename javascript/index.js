@@ -1315,4 +1315,4 @@ var findAndReplacePattern = function(words, pattern) {
 };
 let word = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb";
 // ["mee","aqq"]
-console.log(findAndReplacePattern(word,pattern));
+// console.log(findAndReplacePattern(word,pattern));
