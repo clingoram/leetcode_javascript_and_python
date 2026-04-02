@@ -1315,18 +1315,4 @@ var findAndReplacePattern = function(words, pattern) {
 };
 let word = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb";
 // ["mee","aqq"]
-// console.log(findAndReplacePattern(word,pattern));
-
-
-var reversePrefix = function(s, k) {
-  // 反轉s中前k個字母並回傳
-  // 2 pointers
-  let i = s[0],j = s[k - 1];
-  console.log(j)
-
-};
-let s = "abcd", k = 2;
-// "bacd"
-// let s = "hey", k = 1;
-// "hey"
-console.log(reversePrefix(s,k));
+console.log(findAndReplacePattern(word,pattern));
