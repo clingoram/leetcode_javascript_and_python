@@ -1316,3 +1316,26 @@ var findAndReplacePattern = function(words, pattern) {
 let word = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb";
 // ["mee","aqq"]
 console.log(findAndReplacePattern(word,pattern));
+
+/**
+ * 657. Robot Return to Origin
+ * 
+ * @param {string} moves
+ * @return {boolean}
+ */
+var judgeCircle = function(moves) {
+  /**
+   * moves只會有'R' (right), 'L' (left), 'U' (up)和'D' (down)這幾個英文字母
+   * 回傳布林看moves後是否會回到原點(0, 0)
+   * 
+   * x(0),y(0)
+   * u = d
+   * r = l
+  */
+
+
+};
+let moves = "UD";
+// Output: true
+// Explanation: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.
+console.log(judgeCircle(moves));
