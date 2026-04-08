@@ -1347,37 +1347,37 @@ var judgeCircle = function(moves) {
   // return false;
 
   // this solution?
-  // let direactionsObj = {};
-  // for(let i = 0;i < moves.length;++i) {
-  //   if(Object.hasOwn(direactionsObj, moves[i])){
-  //     direactionsObj[moves[i]] +=1;
-  //   }else{
-  //     direactionsObj[moves[i]] = 1;
-  //   }
-  // }
-  // console.log(direactionsObj)
+  let direactionsObj = {};
+  for(let i = 0;i < moves.length;++i) {
+    if(Object.hasOwn(direactionsObj, moves[i])){
+      direactionsObj[moves[i]] +=1;
+    }else{
+      direactionsObj[moves[i]] = 1;
+    }
+  }
+  console.log(direactionsObj)
 
   // solution 2.
   // TC: O(N)
   // 計算x和y各自出現次數
-  // x = 水平(左右); y = 垂直(上下)
-  let x = 0,y = 0;
+  // x = 水平(左l右r); y = 垂直(上u下d)
   // 水平(x):
   // L:x--; R:x++;
   // 垂直(y):
   // U:y++ ; D: y--
-  for(let i = 0;i < moves.length;++i) {
-    if(moves[i] === 'R'){
-      x++;
-    }else if(moves[i] === 'U'){
-      y++;
-    }else if(moves[i] === 'L'){
-      x--
-    }else if(moves[i] === 'D'){
-      y--;
-    }
-  }
-  return x === 0 && y === 0;
+  // let x = 0,y = 0;
+  // for(let i = 0;i < moves.length;++i) {
+  //   if(moves[i] === 'R'){
+  //     x++;
+  //   }else if(moves[i] === 'U'){
+  //     y++;
+  //   }else if(moves[i] === 'L'){
+  //     x--
+  //   }else if(moves[i] === 'D'){
+  //     y--;
+  //   }
+  // }
+  // return x === 0 && y === 0;
 
 };
 let moves = "UD";
