@@ -1390,4 +1390,5 @@ Explanation: The robot moves up once, and then down once. All moves have the sam
 Output: false
 Explanation: The robot moves left twice. It ends up two "moves" to the left of the origin. We return false because it is not at the origin at the end of its moves.
 */
-console.log(judgeCircle(moves));
+// console.log(judgeCircle(moves));
+
