@@ -1392,3 +1392,30 @@ Explanation: The robot moves left twice. It ends up two "moves" to the left of t
 */
 // console.log(judgeCircle(moves));
 
+/**
+ * 3663. Find The Least Frequent Digit
+ * 
+ * @param {number} n
+ * @return {number}
+ */
+var getLeastFrequentDigit = function(n) {
+    /**
+     * 找出n中出現次數最少的數字有幾次，若有好幾個，則回傳最小數字
+     * 
+     * hash table
+     */
+    let nSplitToStr = n.toString().split("");
+    let map = new Map();
+    for(let i = 0;i < nSplitToStr.length;++i) {
+      map.has(nSplitToStr[i]) ? map.set(nSplitToStr[i],map.get(nSplitToStr[i])+1) : map.set(nSplitToStr[i],1);
+    }
+    console.log(map);
+
+};
+let n = 723344511;
+/*
+Output: 2
+Explanation:
+The least frequent digits in n are 7, 2, and 5; each appears only once.
+*/
+console.log(getLeastFrequentDigit(n));
