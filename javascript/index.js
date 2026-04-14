@@ -1395,14 +1395,19 @@ Explanation: The robot moves left twice. It ends up two "moves" to the left of t
 /**
  * 3663. Find The Least Frequent Digit
  * 
+ * 參數為一整數n，找出在其十進位表示中出現頻率最低的數字。如果多個數字的出現頻率相同，則選擇最小的那個數字。
+ * 以整數形式傳回所選的數字。
+ * 數字x的出現頻率是指它在n的十進位表示法中的出現次數
+ * 
  * @param {number} n
  * @return {number}
  */
 var getLeastFrequentDigit = function(n) {
     /**
-     * 找出n中出現次數最少的數字有幾次，若有好幾個，則回傳最小數字
+     * 找出n中以十進位出現次數最少的數字，若有好幾個數字出現次數一樣，則回傳最小的整數
      * 
-     * hash table
+     * solution 1. Hash table
+     * solution 2. Array
      */
     let nSplitToStr = n.toString().split("");
     let map = new Map();
