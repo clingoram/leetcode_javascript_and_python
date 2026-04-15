@@ -1313,7 +1313,7 @@ var findAndReplacePattern = function(words, pattern) {
 
   }
 };
-let word = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb";
+// let word = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb";
 // ["mee","aqq"]
 // console.log(findAndReplacePattern(word,pattern));
 
@@ -1423,4 +1423,5 @@ Output: 2
 Explanation:
 The least frequent digits in n are 7, 2, and 5; each appears only once.
 */
-console.log(getLeastFrequentDigit(n));
+// console.log(getLeastFrequentDigit(n));
+
