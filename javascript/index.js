@@ -1395,8 +1395,7 @@ Explanation: The robot moves left twice. It ends up two "moves" to the left of t
 /**
  * 3663. Find The Least Frequent Digit
  * 
- * 參數為一整數n，找出在其十進位表示中出現頻率最低的數字。如果多個數字的出現頻率相同，則選擇最小的那個數字。
- * 以整數形式傳回所選的數字。
+ * 參數為一整數n，找出在其十進位表示中出現頻率最低的數字。如果多個數字的出現頻率相同，則選擇最小的元素。
  * 數字x的出現頻率是指它在n的十進位表示法中的出現次數
  * 
  * @param {number} n
@@ -1404,17 +1403,34 @@ Explanation: The robot moves left twice. It ends up two "moves" to the left of t
  */
 var getLeastFrequentDigit = function(n) {
     /**
-     * 找出n中以十進位出現次數最少的數字，若有好幾個數字出現次數一樣，則回傳最小的整數
+     * 依據每個數字出現的次數找出出現次數最少的元素，若有好幾個數字出現次數相同，回傳最小的那個元素。
      * 
      * solution 1. Hash table
      * solution 2. Array
      */
-    let nSplitToStr = n.toString().split("");
-    let map = new Map();
-    for(let i = 0;i < nSplitToStr.length;++i) {
-      map.has(nSplitToStr[i]) ? map.set(nSplitToStr[i],map.get(nSplitToStr[i])+1) : map.set(nSplitToStr[i],1);
-    }
-    console.log(map);
+    // solution 1.
+    // Hash table
+    // let nSplitToStr = n.toString().split("");
+    // let map = new Map();
+    // let minFreq = Infinity,result = 10;
+    // for(let i = 0;i < nSplitToStr.length;++i) {
+    //   map.has(nSplitToStr[i]) ? map.set(nSplitToStr[i],map.get(nSplitToStr[i]) + 1) : map.set(nSplitToStr[i],1);
+    // }
+    // for(const [key,value] of map){
+    //   minFreq = Math.min(minFreq, value);
+    // }
+    // for(const [key,value] of map) {
+    //   if(value === minFreq){
+    //     result = Math.min(result,key);
+    //   }
+    // }
+    // return result;
+
+    // solution 2.
+    // Array.
+    let hash = new Array(10).fill(0);
+    let ans = 0,minFreq = 0;
+    console.log(hash)
 
 };
 let n = 723344511;
@@ -1423,5 +1439,29 @@ Output: 2
 Explanation:
 The least frequent digits in n are 7, 2, and 5; each appears only once.
 */
-// console.log(getLeastFrequentDigit(n));
+console.log(getLeastFrequentDigit(n));
 
+/**
+ * 3488. Closest Equal Element Queries
+ * 
+ * 2 array: 
+ * queries.
+ * circular array: nums.
+
+ * min distance between the element at index queries[i] and any other index j: nums[j] === nums[queries[i]]
+ * same size aas queries where answer[i]
+ * @param {number[]} nums
+ * @param {number[]} queries
+ * @return {number[]}
+ */
+var solveQueries = function(nums, queries) {
+    
+};
+let nums = [1,3,1,4,1,3,2], queries = [0,3,5];
+/*
+Output: [2,-1,3]
+Explanation:
+Query 0: The element at queries[0] = 0 is nums[0] = 1. The nearest index with the same value is 2, and the distance between them is 2.
+Query 1: The element at queries[1] = 3 is nums[3] = 4. No other index contains 4, so the result is -1.
+Query 2: The element at queries[2] = 5 is nums[5] = 3. The nearest index with the same value is 1, and the distance between them is 3 (following the circular path: 5 -> 6 -> 0 -> 1).
+*/
