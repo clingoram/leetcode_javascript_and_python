@@ -1408,6 +1408,7 @@ var getLeastFrequentDigit = function(n) {
      * solution 1. Hash table
      * solution 2. Array
      */
+
     // solution 1.
     // Hash table
     // let nSplitToStr = n.toString().split("");
@@ -1416,15 +1417,18 @@ var getLeastFrequentDigit = function(n) {
     // for(let i = 0;i < nSplitToStr.length;++i) {
     //   map.has(nSplitToStr[i]) ? map.set(nSplitToStr[i],map.get(nSplitToStr[i]) + 1) : map.set(nSplitToStr[i],1);
     // }
+    // 不斷比較minFreq和value哪個最小，因此minFreq值會一直更新
     // for(const [key,value] of map){
-    //   minFreq = Math.min(minFreq, value);
+    //     minFreq = Math.min(minFreq,value);
     // }
-    // for(const [key,value] of map) {
-    //   if(value === minFreq){
-    //     result = Math.min(result,key);
-    //   }
+    // for(const [key,value] of map){
+    //     // 最小的value = minFreq
+    //     if(value === minFreq){
+    //         // 比較result和key哪個最小，key = 元素
+    //         result = Math.min(result,key);
+    //     }
     // }
-    // return result;
+    // return reuslt;
 
     // solution 2.
     // Array.
@@ -1439,7 +1443,7 @@ Output: 2
 Explanation:
 The least frequent digits in n are 7, 2, and 5; each appears only once.
 */
-console.log(getLeastFrequentDigit(n));
+// console.log(getLeastFrequentDigit(n));
 
 /**
  * 3488. Closest Equal Element Queries
@@ -1457,7 +1461,7 @@ console.log(getLeastFrequentDigit(n));
 var solveQueries = function(nums, queries) {
     
 };
-let nums = [1,3,1,4,1,3,2], queries = [0,3,5];
+// let nums = [1,3,1,4,1,3,2], queries = [0,3,5];
 /*
 Output: [2,-1,3]
 Explanation:
@@ -1465,3 +1469,5 @@ Query 0: The element at queries[0] = 0 is nums[0] = 1. The nearest index with th
 Query 1: The element at queries[1] = 3 is nums[3] = 4. No other index contains 4, so the result is -1.
 Query 2: The element at queries[2] = 5 is nums[5] = 3. The nearest index with the same value is 1, and the distance between them is 3 (following the circular path: 5 -> 6 -> 0 -> 1).
 */
+
+
