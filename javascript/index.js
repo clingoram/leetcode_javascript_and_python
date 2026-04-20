@@ -1459,9 +1459,48 @@ The least frequent digits in n are 7, 2, and 5; each appears only once.
  * @return {number[]}
  */
 var solveQueries = function(nums, queries) {
-    
+    /**
+     * querise[i] = nums[i]
+     * 
+     * Use a HashMap to store the indices of each number in nums. The key should be nums[i], and the value should be a list of indices where nums[i] appears.
+     * Hint 2: For each query, retrieve the stored list of indices for nums[queries[i]].
+     * Hint 3: Use binary search to efficiently find the next occurrence of the number. This reduces the lookup time to O(log N) instead of O(N).
+     * 
+     */
+    let mapNums = new Map();
+    for(let i = 0;i < nums.length;++i) {
+      // mapNums: key(nums[i]),value(i)
+      if(!mapNums.has(nums[i])) {
+        mapNums.set(nums[i], [])
+      }
+      mapNums.get(nums[i]).push(i)
+    }
+    console.log(mapNums)
+    let arr = new Array(nums.length).fill(-1);
+    // for(let i = 0;i < queries.length;++i) {
+    //   if(mapNums.has(queries[i])){
+    //     console.log(mapNums.get(queries[i]))
+    //   }
+    // }
+    // binary search
+    function binarySearch(arr,target){
+      let left = 0,right = arr.length - 1;
+      while(left <= right){
+        let mid = left + Math.floor((right - left) / 2);
+
+        if(arr[mid] === target){
+            return mid;
+        }else if(arr[mid] > target){
+            right--;
+        }else{
+            left++;
+        }
+      }
+      return -1;
+    }
+
 };
-// let nums = [1,3,1,4,1,3,2], queries = [0,3,5];
+let nums = [1,3,1,4,1,3,2], queries = [0,3,5];
 /*
 Output: [2,-1,3]
 Explanation:
@@ -1469,5 +1508,4 @@ Query 0: The element at queries[0] = 0 is nums[0] = 1. The nearest index with th
 Query 1: The element at queries[1] = 3 is nums[3] = 4. No other index contains 4, so the result is -1.
 Query 2: The element at queries[2] = 5 is nums[5] = 3. The nearest index with the same value is 1, and the distance between them is 3 (following the circular path: 5 -> 6 -> 0 -> 1).
 */
-
-
+console.log(solveQueries(nums,queries));
