@@ -1508,4 +1508,6 @@ Query 0: The element at queries[0] = 0 is nums[0] = 1. The nearest index with th
 Query 1: The element at queries[1] = 3 is nums[3] = 4. No other index contains 4, so the result is -1.
 Query 2: The element at queries[2] = 5 is nums[5] = 3. The nearest index with the same value is 1, and the distance between them is 3 (following the circular path: 5 -> 6 -> 0 -> 1).
 */
-console.log(solveQueries(nums,queries));
+// console.log(solveQueries(nums,queries));
+
+
