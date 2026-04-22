@@ -1313,6 +1313,201 @@ var findAndReplacePattern = function(words, pattern) {
 
   }
 };
-let word = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb";
+// let word = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb";
 // ["mee","aqq"]
 // console.log(findAndReplacePattern(word,pattern));
+
+/**
+ * 657. Robot Return to Origin
+ * 
+ * @param {string} moves
+ * @return {boolean}
+ */
+var judgeCircle = function(moves) {
+  /**
+   * moves只會有'R' (right), 'L' (left), 'U' (up)和'D' (down)這幾個英文字母
+   * 回傳布林看moves後是否會回到原點(0, 0)
+   * 
+   * x(0),y(0)
+   * u = d
+   * r = l
+   * 
+   * 計算每個字母出現次數，r的出現次數 = l的出現次數; u 的出現次數 = d的出現次數
+  */
+  // solution 1.
+  // TC:O(N)
+  // let direactionsCount = new Map();
+  // for(let i = 0;i < moves.length;++i) {
+  //   direactionsCount.has(moves[i]) ? direactionsCount.set(moves[i],direactionsCount.get(moves[i])+1) : direactionsCount.set(moves[i],1);
+  // }
+  // // 取得Map.get(key)對應value
+  // if(direactionsCount.get("U") === direactionsCount.get("D") && direactionsCount.get("R") === direactionsCount.get("L")){
+  //   return true;
+  // }
+  // return false;
+
+  // this solution?
+  let direactionsObj = {};
+  for(let i = 0;i < moves.length;++i) {
+    if(Object.hasOwn(direactionsObj, moves[i])){
+      direactionsObj[moves[i]] +=1;
+    }else{
+      direactionsObj[moves[i]] = 1;
+    }
+  }
+  console.log(direactionsObj)
+
+  // solution 2.
+  // TC: O(N)
+  // 計算x和y各自出現次數
+  // x = 水平(左l右r); y = 垂直(上u下d)
+  // 水平(x):
+  // L:x--; R:x++;
+  // 垂直(y):
+  // U:y++ ; D: y--
+  // let x = 0,y = 0;
+  // for(let i = 0;i < moves.length;++i) {
+  //   if(moves[i] === 'R'){
+  //     x++;
+  //   }else if(moves[i] === 'U'){
+  //     y++;
+  //   }else if(moves[i] === 'L'){
+  //     x--
+  //   }else if(moves[i] === 'D'){
+  //     y--;
+  //   }
+  // }
+  // return x === 0 && y === 0;
+
+};
+let moves = "UD";
+/*
+Output: true
+Explanation: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.
+*/
+// let moves = "LL";
+/*
+Output: false
+Explanation: The robot moves left twice. It ends up two "moves" to the left of the origin. We return false because it is not at the origin at the end of its moves.
+*/
+// console.log(judgeCircle(moves));
+
+/**
+ * 3663. Find The Least Frequent Digit
+ * 
+ * 參數為一整數n，找出在其十進位表示中出現頻率最低的數字。如果多個數字的出現頻率相同，則選擇最小的元素。
+ * 數字x的出現頻率是指它在n的十進位表示法中的出現次數
+ * 
+ * @param {number} n
+ * @return {number}
+ */
+var getLeastFrequentDigit = function(n) {
+    /**
+     * 依據每個數字出現的次數找出出現次數最少的元素，若有好幾個數字出現次數相同，回傳最小的那個元素。
+     * 
+     * solution 1. Hash table
+     * solution 2. Array
+     */
+
+    // solution 1.
+    // Hash table
+    // let nSplitToStr = n.toString().split("");
+    // let map = new Map();
+    // let minFreq = Infinity,result = 10;
+    // for(let i = 0;i < nSplitToStr.length;++i) {
+    //   map.has(nSplitToStr[i]) ? map.set(nSplitToStr[i],map.get(nSplitToStr[i]) + 1) : map.set(nSplitToStr[i],1);
+    // }
+    // 不斷比較minFreq和value哪個最小，因此minFreq值會一直更新
+    // for(const [key,value] of map){
+    //     minFreq = Math.min(minFreq,value);
+    // }
+    // for(const [key,value] of map){
+    //     // 最小的value = minFreq
+    //     if(value === minFreq){
+    //         // 比較result和key哪個最小，key = 元素
+    //         result = Math.min(result,key);
+    //     }
+    // }
+    // return reuslt;
+
+    // solution 2.
+    // Array.
+    let hash = new Array(10).fill(0);
+    let ans = 0,minFreq = 0;
+    console.log(hash)
+
+};
+let n = 723344511;
+/*
+Output: 2
+Explanation:
+The least frequent digits in n are 7, 2, and 5; each appears only once.
+*/
+// console.log(getLeastFrequentDigit(n));
+
+/**
+ * 3488. Closest Equal Element Queries
+ * 
+ * 2 array: 
+ * queries.
+ * circular array: nums.
+
+ * min distance between the element at index queries[i] and any other index j: nums[j] === nums[queries[i]]
+ * same size aas queries where answer[i]
+ * @param {number[]} nums
+ * @param {number[]} queries
+ * @return {number[]}
+ */
+var solveQueries = function(nums, queries) {
+    /**
+     * querise[i] = nums[i]
+     * 
+     * Use a HashMap to store the indices of each number in nums. The key should be nums[i], and the value should be a list of indices where nums[i] appears.
+     * Hint 2: For each query, retrieve the stored list of indices for nums[queries[i]].
+     * Hint 3: Use binary search to efficiently find the next occurrence of the number. This reduces the lookup time to O(log N) instead of O(N).
+     * 
+     */
+    let mapNums = new Map();
+    for(let i = 0;i < nums.length;++i) {
+      // mapNums: key(nums[i]),value(i)
+      if(!mapNums.has(nums[i])) {
+        mapNums.set(nums[i], [])
+      }
+      mapNums.get(nums[i]).push(i)
+    }
+    console.log(mapNums)
+    let arr = new Array(nums.length).fill(-1);
+    // for(let i = 0;i < queries.length;++i) {
+    //   if(mapNums.has(queries[i])){
+    //     console.log(mapNums.get(queries[i]))
+    //   }
+    // }
+    // binary search
+    function binarySearch(arr,target){
+      let left = 0,right = arr.length - 1;
+      while(left <= right){
+        let mid = left + Math.floor((right - left) / 2);
+
+        if(arr[mid] === target){
+            return mid;
+        }else if(arr[mid] > target){
+            right--;
+        }else{
+            left++;
+        }
+      }
+      return -1;
+    }
+
+};
+let nums = [1,3,1,4,1,3,2], queries = [0,3,5];
+/*
+Output: [2,-1,3]
+Explanation:
+Query 0: The element at queries[0] = 0 is nums[0] = 1. The nearest index with the same value is 2, and the distance between them is 2.
+Query 1: The element at queries[1] = 3 is nums[3] = 4. No other index contains 4, so the result is -1.
+Query 2: The element at queries[2] = 5 is nums[5] = 3. The nearest index with the same value is 1, and the distance between them is 3 (following the circular path: 5 -> 6 -> 0 -> 1).
+*/
+// console.log(solveQueries(nums,queries));
+
+
