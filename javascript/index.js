@@ -1500,7 +1500,7 @@ var solveQueries = function(nums, queries) {
     }
 
 };
-let nums = [1,3,1,4,1,3,2], queries = [0,3,5];
+// let nums = [1,3,1,4,1,3,2], queries = [0,3,5];
 /*
 Output: [2,-1,3]
 Explanation:
