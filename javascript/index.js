@@ -1385,3 +1385,28 @@ Query 2: The element at queries[2] = 5 is nums[5] = 3. The nearest index with th
 */
 // console.log(solveQueries(nums,queries));
 
+/**
+ * 645. Set Mismatch
+ * 
+ * 參數為數字陣列，從1至n，但內有重複的元素，找出它們並調整成對的元素
+ *
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findErrorNums = function(nums) {
+  let res = [];
+  let map = new Map();
+  for(const ele of nums){
+    map.has(ele) ? map.set(ele,map.get(ele) + 1 ) : map.set(ele,1);
+  }
+  // console.log(map)
+  for(const [key,value] of map) {
+    if(value >= 2){
+      console.log(key);
+
+    }
+  }
+};
+let nums = [1,2,2,4];
+// [2,3]
+console.log(findErrorNums(nums));
