@@ -836,7 +836,7 @@ var longestPalindrome = function(words) {
 
  
 };
-let words = ["ab","ty","yt","lc","cl","ab"];
+// let words = ["ab","ty","yt","lc","cl","ab"];
 // 8
 // "ty" + "lc" + "cl" + "yt" = "tylc clyt"
 // abtyytba
@@ -1384,3 +1384,49 @@ Query 1: The element at queries[1] = 3 is nums[3] = 4. No other index contains 4
 Query 2: The element at queries[2] = 5 is nums[5] = 3. The nearest index with the same value is 1, and the distance between them is 3 (following the circular path: 5 -> 6 -> 0 -> 1).
 */
 // console.log(solveQueries(nums,queries));
+
+/**
+ * 645. Set Mismatch
+ * 
+ * 參數為數字陣列，從1至n，但內有重複的元素，找出它們並調整成對的元素
+ *
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findErrorNums = function(nums) {
+  let res = [];
+  let map = new Map();
+  for(const ele of nums){
+    map.has(ele) ? map.set(ele,map.get(ele) + 1 ) : map.set(ele,1);
+  }
+  // console.log(map)
+  for(const [key,value] of map) {
+    if(value >= 2){
+      console.log(key);
+
+    }
+  }
+};
+let nums = [1,2,2,4];
+// [2,3]
+// console.log(findErrorNums(nums));
+
+
+/**
+ * 2864. Maximum Odd Binary Number
+ * 
+ * @param {string} s
+ * @return {string}
+ */
+var maximumOddBinaryNumber = function(s) {
+    /**
+    * binary string s包含至少一個'1'
+    * rearrange 參數s成最大的奇二進制數
+    * 回傳的結果值開頭可以是0
+    */
+   
+};
+let s = "010";
+// Output: "001"
+// Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
+console.log(maximumOddBinaryNumber(s));
