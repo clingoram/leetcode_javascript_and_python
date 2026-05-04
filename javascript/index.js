@@ -1409,4 +1409,24 @@ var findErrorNums = function(nums) {
 };
 let nums = [1,2,2,4];
 // [2,3]
-console.log(findErrorNums(nums));
+// console.log(findErrorNums(nums));
+
+
+/**
+ * 2864. Maximum Odd Binary Number
+ * 
+ * @param {string} s
+ * @return {string}
+ */
+var maximumOddBinaryNumber = function(s) {
+    /**
+    * binary string s包含至少一個'1'
+    * rearrange 參數s成最大的奇二進制數
+    * 回傳的結果值開頭可以是0
+    */
+   
+};
+let s = "010";
+// Output: "001"
+// Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
+console.log(maximumOddBinaryNumber(s));
