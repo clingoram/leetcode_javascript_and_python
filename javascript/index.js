@@ -150,52 +150,6 @@ const num1 = "123456789",num2 = "987654321";
 
 
 /**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-var twoSum = function (nums, target) {
-
-  // two pointer solution.Big O(n)
-  if (nums.length < 1 || !target) {
-    return;
-  }
-
-  nums.sort((a, b) => a - b);
-
-  let left = 0;
-  let right = nums.length - 1;
-  let result = [];
-
-  while (left < right) {
-    if (nums[left] + nums[right] === target) {
-      // return [left + 1, right + 1];
-      result.push(left, right);
-      left++;
-      right--;
-    } else if (nums[left] + nums[right] < target) {
-      left++;
-    } else {
-      right--;
-    }
-  }
-  return result;
-};
-// const target = 9;
-// const nums = [2, 7, 11, 15];
-//            ^          ^
-// Output: [0,1]
-// Output: Because nums[0] + nums[1] == 9, we return [0, 1].
-
-// const nums = [3, 2, 4];
-// const target = 6;
-// Output: [1,2]
-// nums[1] + nums[2] = 6
-// console.log(twoSum(nums, target));
-
-
-
-/**
  * 1415. The k-th Lexicographical String of All Happy Strings of Length n
  * 
  * A happy string is a string that:
@@ -250,6 +204,7 @@ var getHappyString = function (n, k) {
 
 /**
  * 2099. Find Subsequence of Length K With the Largest Sum
+ * Level:Hard
  * 
  * You are given an integer array nums and an integer k. You want to find a subsequence of nums of length k that has the largest sum.
  * Return any such subsequence as an integer array of length k.
@@ -321,80 +276,6 @@ var maxSubsequence = function(nums, k) {
 // let nums = [2,1,3,3], k = 2;
 // 「3,3]
 // console.log(maxSubsequence(nums,k))
-
-/**
- * 2186. Minimum Number of Steps to Make Two Strings Anagram II
- * 
- * 兩個字串參數s & t，在一次操作中，可以加上任一字母至s或t中。
- * 回傳讓s和t變成anagrams的最少步驟數
- * 
- * anagrams:長度一樣、字母一樣但排序可以不一樣
- * 
- * @param {string} s
- * @param {string} t
- * @return {number}
- */
-var minSteps = function(s, t) {
-  // 檢查是否是anagrams可用：sort、count
-  let countOP = 0;
-  let mapS = new Map();
-  let mapT = new Map();
-  // 參數s 字母出現次數
-  for (let i = 0; i < s.length; i++) {
-    const element = s[i];
-    mapS.has(element) ? mapS.set(element, mapS.get(element) + 1) : mapS.set(element, 1);
-  }
-  // 參數t 字母出現次數
-  for (let i = 0; i < t.length; i++) {
-    const element = t[i];
-    mapT.has(element) ? mapT.set(element, mapT.get(element) + 1) : mapT.set(element, 1);
-  }
-
-  // 字母出現幾次就得是幾次
-  // t有但s沒有的字母有幾個 (a,s) 2
-  // s有但t沒有的字母有幾個 (l,e,e,d,e) 5
-  for(let [key,value] of mapS){
-    if(!mapT.has(key)){
-      countOP+= value;
-    }
-
-  }
-  for(let [key,value] of mapT){
-    if(!mapS.has(key)){
-      countOP+= value;
-    }
-  }
-  return countOP;
-
-  // solution 2.
-  // use obj
-  // let countOP = 0;
-  // let freq = {};
-  // for (const element of s) {
-  //   freq[element] =  freq[element] || 0) + 1;
-  // }
-  // for(const element of t) {
-  //   if(!freq[element]){
-  //     continue;
-  //   }
-  //   --freq[element];
-  //   ++countOP;
-  // }
-  // return s.length + t.length - countOP * 2;
-};
-// let s = "leetcode", t = "coats";
-/**
- * 7
- * - In 2 steps, we can append the letters in "as" onto s = "leetcode", forming s = "leetcodeas".
- * - In 5 steps, we can append the letters in "leede" onto t = "coats", forming t = "coatsleede".
- * "leetcodeas" and "coatsleede" are now anagrams of each other.
- * We used a total of 2 + 5 = 7 steps.
- * It can be shown that there is no way to make them anagrams of each other with less than 7 steps.
- */
-// let s = "cotxazilut",t = "nahrrmcchxwrieqqdwdpneitkxgnt";
-// 27
-// console.log(minSteps(s,t));
-
 
 
 /**
@@ -475,10 +356,11 @@ var kthDigit = function(a,b,k){
  * */
 var fractionRecurringDecimal = function (a,b) {
   // 回傳a,b的分數，若小數點皆是重複數字，則加上括號 => .(XXX)
+  console.log(Math.floor(b / a))
 }
-// let a = 1,b = 2;
+let a = 1,b = 2;
 // "0.5"
-// console.log(fractionRecurringDecimal(a,b));
+console.log(fractionRecurringDecimal(a,b));
 
 /**
  * Recurring Sequence in a Fraction
@@ -1405,34 +1287,3 @@ let s = "010";
 // Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
 // console.log(maximumOddBinaryNumber(s));
 
-/**
- * 2553. Separate the Digits in an Array
- * 
- * @param {number[]} nums
- * @return {number[]}
- */
-var separateDigits = function(nums) {
-    /*
-    將參數元素依照位數拆開之後依照原本的順序合併
-    */
-    let ans = [];
-    for(let i = 0;i < nums.length;++i) {
-      while(nums[i] > 0){
-          ans.push(nums[i] % 10);
-          nums[i]/=10;
-        }
-    }
-    console.log(ans);
-
-};
-let nums = [13,25,83,77];
-/*
-Output: [1,3,2,5,8,3,7,7]
-Explanation: 
-- The separation of 13 is [1,3].
-- The separation of 25 is [2,5].
-- The separation of 83 is [8,3].
-- The separation of 77 is [7,7].
-answer = [1,3,2,5,8,3,7,7]. Note that answer contains the separations in the same order.
-*/
-console.log(separateDigits(nums));
