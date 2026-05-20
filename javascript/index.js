@@ -360,7 +360,7 @@ var fractionRecurringDecimal = function (a,b) {
 }
 let a = 1,b = 2;
 // "0.5"
-console.log(fractionRecurringDecimal(a,b));
+// console.log(fractionRecurringDecimal(a,b));
 
 /**
  * Recurring Sequence in a Fraction
