@@ -998,33 +998,32 @@ var smallestRepunitDivByK = function(k) {
  * @return {number}
  */
 var specialTriplets = function(nums) {
-    let ans = 0;
-    // j as the middle of the triplet.
-    // For each j, you only need:
-    // how many values equal to 2 * nums[j] appear before j
-    // how many appear after j
-    // Then the contribution from index j is just:
-    // leftCount * rightCount
-    // let j = Math.floor(nums[nums.length % 2 ]);
-    // // console.log(j)
-    // for(let i = 0;i < nums.length;++i) {
-
-    // }
-
-    /**
+  /*
+  * j as the middle of the triplet.
+     * For each j, you only need:
+     * how many values equal to 2 * nums[j] appear before j
+     * how many appear after j
+     * Then the contribution from index j is just:
+     * leftCount * rightCount
+     * 
      * j = middle index
      * 在j之前，檢查nums[i] === nums[j] * 2 的有幾個
      * 在j之後，檢查nums[k] === nums[j] * 2 的有幾個
      */
-    // let left = new Map();
-    // let right = new Map();
-    let j = Math.round(nums.length % 2);
-    for(let i = 0;i < nums.length;++i) {
-      if(nums[i] === nums[j] * 2 && i < j){
-        ans++;
-      }
-    }
-    console.log(ans)
+        
+      // Use frequency arrays or maps, e.g. freqPrev and freqNext—to track how many times each value appears before and after the current index.
+      // For each index j in the triplet (i,j,k), compute its contribution to the answer using your freqPrev and freqNext counts.
+  let ans = 0;
+  let freqPrev = new Map() , freqNext = new Map();
+  const MOD = 1e9 + 7;
+  for(const element of nums){
+   freqPrev.set(element, freqPrev.get(element) || 0 + 1);
+  }
+  for(let i = 0;i < nums.length;++i) {
+    
+  }
+  return ans;
+
 };
 // let nums = [8,4,2,8,4];
 /**
@@ -1041,7 +1040,9 @@ var specialTriplets = function(nums) {
  * nums[1] = nums[2] * 2 = 2 * 2 = 4
  * nums[4] = nums[2] * 2 = 2 * 2 = 4
  */
-// console.log(specialTriplets(nums));
+let nums = [0,1,0,0];
+// 1
+console.log(specialTriplets(nums));
 
 
 /**
