@@ -9,3 +9,4 @@
 
 使用Docker對應Image和腳本來執行
 JavaScript 使用node
+sh script_name file_name
