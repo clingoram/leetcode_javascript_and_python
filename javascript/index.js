@@ -1288,35 +1288,3 @@ let s = "010";
 // Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
 // console.log(maximumOddBinaryNumber(s));
 
-/**
- * 1331. Rank Transform of an Array
- * 
- * 依照每個元素在陣列中的排名來回傳，須維持原樣
- * 排序從1開始，若元素一樣則排名一樣
- * 最小的元素 = 1，最大的則為陣列長度
- * 
- * @param {number[]} arr
- * @return {number[]}
- */
-var arrayRankTransform = function(arr) {
-  let result = [];
-  let maxRank = arr.length;
-  let map = new Map();
-  for(let i = 0; i < arr.length;++i) {
-    if(!map.has(arr[i])){
-      map.set(arr[i],maxRank--);
-    }
-  }
-  let sortedRank = arr.sort((a,b) => b - a);
-  console.log(sortedRank)
-  for(let i = 0;i < sortedRank.length;++i) {
-    result[i]= map.get(arr[i]);
-  }
-  console.log(result)
-
-};
-// let arr = [40,10,20,30];
-// [4,1,2,3]
-let arr = [37,12,28,9,100,56,80,5,12];
-// [5,3,4,2,8,6,7,1,3]
-console.log(arrayRankTransform(arr))
