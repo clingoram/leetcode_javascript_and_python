@@ -1288,3 +1288,31 @@ let s = "010";
 // Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
 // console.log(maximumOddBinaryNumber(s));
 
+/**
+ * 3852. Smallest Pair With Different Frequencies
+ * 
+ * answer = [x,y],answer length === 1
+ * x < y and freq of x and y is different.
+ * 沒有回傳[-1,-1]
+ * 
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var minDistinctFreqPair = function(nums) {
+  // 找出最小的元素x以及出現次數最少的元素y
+  let map = new Map();
+  let minE = nums[0];
+  for(const a of nums){
+    map.has(a) ? map.set(a,map.get(a) + 1) : map.set(a,1);
+  }
+  for(const [key,value] of map.entries()){
+    if(key === minE && value % 2 === 0){
+      console.log(key)
+    }
+  }
+  return [-1,-1]
+  // console.log(map)
+};
+let num = [1,1,2,2,3,4];
+// [1,3]
+console.log(minDistinctFreqPair(num))
