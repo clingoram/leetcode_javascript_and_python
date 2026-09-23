@@ -1040,9 +1040,9 @@ var specialTriplets = function(nums) {
  * nums[1] = nums[2] * 2 = 2 * 2 = 4
  * nums[4] = nums[2] * 2 = 2 * 2 = 4
  */
-let nums = [0,1,0,0];
+// let nums = [0,1,0,0];
 // 1
-console.log(specialTriplets(nums));
+// console.log(specialTriplets(nums));
 
 
 /**
@@ -1315,4 +1315,5 @@ var minDistinctFreqPair = function(nums) {
 };
 let num = [1,1,2,2,3,4];
 // [1,3]
-console.log(minDistinctFreqPair(num))
+// console.log(minDistinctFreqPair(num))
+
