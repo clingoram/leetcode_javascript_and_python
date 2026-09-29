@@ -1317,3 +1317,40 @@ let num = [1,1,2,2,3,4];
 // [1,3]
 // console.log(minDistinctFreqPair(num))
 
+/**
+ * 4048. Count Values With Equally Spaced Occurrences I
+ * 
+ * special: x在nums中出現3次，這三次的index必須要隔一數字(i < j < k)，回傳有幾個不重複(unique)元素符合
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countSpecialIntegers = function(nums) {
+    let ans = 0;
+    let map = new Map();
+    for(let i = 0;i < nums.length;++i){
+      // map.has(nums[i]) ? map.set(nums[i],map.get(nums[i]) + 1) : map.set(nums[i],1);
+
+      map.has(i) ? map.set(i,nums[i]) : map.set(i,nums[i]);
+
+      // for(let j = i + 1;j < nums.length;++j) {
+      //   for(let k = j + 1;k < nums.length;++k) {
+      //     if(nums[i] == nums[j] == nums[k] && j - i == k - j){
+      //       ans++;
+      //     }
+      //   }
+      // }
+    }
+    // return ans;
+    console.log(map)
+
+};
+let nums = [1,8,1,5,1,5,8,5];
+/**
+ * 2
+ * 
+ * 1 is special because it occurs exactly three times at equally spaced indices 0, 2, and 4.
+ * 5 is special because it occurs exactly three times at equally spaced indices 3, 5, and 7.
+ * 8 is not special because it occurs only twice.
+ * Therefore, the answer is 2.
+*/
+console.log(countSpecialIntegers(nums))
