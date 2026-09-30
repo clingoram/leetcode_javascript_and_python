@@ -1325,24 +1325,29 @@ let num = [1,1,2,2,3,4];
  * @return {number}
  */
 var countSpecialIntegers = function(nums) {
+    // 在陣列中出現3次且indx必須隔一數字(i < j < k)
     let ans = 0;
     let map = new Map();
     for(let i = 0;i < nums.length;++i){
+      if(map.has(nums[i])){
+        map.set(nums[i],map.get(nums[i]) + 1)
+      }else{
+        map.set(nums[i],1)
+
+      }
       // map.has(nums[i]) ? map.set(nums[i],map.get(nums[i]) + 1) : map.set(nums[i],1);
-
-      map.has(i) ? map.set(i,nums[i]) : map.set(i,nums[i]);
-
-      // for(let j = i + 1;j < nums.length;++j) {
-      //   for(let k = j + 1;k < nums.length;++k) {
-      //     if(nums[i] == nums[j] == nums[k] && j - i == k - j){
-      //       ans++;
-      //     }
-      //   }
-      // }
     }
-    // return ans;
     console.log(map)
+    for(const [key,value] of map.entries()){
+      // console.log(key[0])
+      if(value === 3){
+        if(Math.abs(value[0] - value[1]) == Math.abs(value[2] - value[1])){
+          ans++;
 
+        }
+      }
+    }
+    return ans;
 };
 let nums = [1,8,1,5,1,5,8,5];
 /**
@@ -1353,4 +1358,6 @@ let nums = [1,8,1,5,1,5,8,5];
  * 8 is not special because it occurs only twice.
  * Therefore, the answer is 2.
 */
+// let nums = [8,6,6,8,8];
+// 0
 console.log(countSpecialIntegers(nums))
