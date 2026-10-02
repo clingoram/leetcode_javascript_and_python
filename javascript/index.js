@@ -150,52 +150,6 @@ const num1 = "123456789",num2 = "987654321";
 
 
 /**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-var twoSum = function (nums, target) {
-
-  // two pointer solution.Big O(n)
-  if (nums.length < 1 || !target) {
-    return;
-  }
-
-  nums.sort((a, b) => a - b);
-
-  let left = 0;
-  let right = nums.length - 1;
-  let result = [];
-
-  while (left < right) {
-    if (nums[left] + nums[right] === target) {
-      // return [left + 1, right + 1];
-      result.push(left, right);
-      left++;
-      right--;
-    } else if (nums[left] + nums[right] < target) {
-      left++;
-    } else {
-      right--;
-    }
-  }
-  return result;
-};
-// const target = 9;
-// const nums = [2, 7, 11, 15];
-//            ^          ^
-// Output: [0,1]
-// Output: Because nums[0] + nums[1] == 9, we return [0, 1].
-
-// const nums = [3, 2, 4];
-// const target = 6;
-// Output: [1,2]
-// nums[1] + nums[2] = 6
-// console.log(twoSum(nums, target));
-
-
-
-/**
  * 1415. The k-th Lexicographical String of All Happy Strings of Length n
  * 
  * A happy string is a string that:
@@ -250,6 +204,7 @@ var getHappyString = function (n, k) {
 
 /**
  * 2099. Find Subsequence of Length K With the Largest Sum
+ * Level:Hard
  * 
  * You are given an integer array nums and an integer k. You want to find a subsequence of nums of length k that has the largest sum.
  * Return any such subsequence as an integer array of length k.
@@ -321,80 +276,6 @@ var maxSubsequence = function(nums, k) {
 // let nums = [2,1,3,3], k = 2;
 // 「3,3]
 // console.log(maxSubsequence(nums,k))
-
-/**
- * 2186. Minimum Number of Steps to Make Two Strings Anagram II
- * 
- * 兩個字串參數s & t，在一次操作中，可以加上任一字母至s或t中。
- * 回傳讓s和t變成anagrams的最少步驟數
- * 
- * anagrams:長度一樣、字母一樣但排序可以不一樣
- * 
- * @param {string} s
- * @param {string} t
- * @return {number}
- */
-var minSteps = function(s, t) {
-  // 檢查是否是anagrams可用：sort、count
-  let countOP = 0;
-  let mapS = new Map();
-  let mapT = new Map();
-  // 參數s 字母出現次數
-  for (let i = 0; i < s.length; i++) {
-    const element = s[i];
-    mapS.has(element) ? mapS.set(element, mapS.get(element) + 1) : mapS.set(element, 1);
-  }
-  // 參數t 字母出現次數
-  for (let i = 0; i < t.length; i++) {
-    const element = t[i];
-    mapT.has(element) ? mapT.set(element, mapT.get(element) + 1) : mapT.set(element, 1);
-  }
-
-  // 字母出現幾次就得是幾次
-  // t有但s沒有的字母有幾個 (a,s) 2
-  // s有但t沒有的字母有幾個 (l,e,e,d,e) 5
-  for(let [key,value] of mapS){
-    if(!mapT.has(key)){
-      countOP+= value;
-    }
-
-  }
-  for(let [key,value] of mapT){
-    if(!mapS.has(key)){
-      countOP+= value;
-    }
-  }
-  return countOP;
-
-  // solution 2.
-  // use obj
-  // let countOP = 0;
-  // let freq = {};
-  // for (const element of s) {
-  //   freq[element] =  freq[element] || 0) + 1;
-  // }
-  // for(const element of t) {
-  //   if(!freq[element]){
-  //     continue;
-  //   }
-  //   --freq[element];
-  //   ++countOP;
-  // }
-  // return s.length + t.length - countOP * 2;
-};
-// let s = "leetcode", t = "coats";
-/**
- * 7
- * - In 2 steps, we can append the letters in "as" onto s = "leetcode", forming s = "leetcodeas".
- * - In 5 steps, we can append the letters in "leede" onto t = "coats", forming t = "coatsleede".
- * "leetcodeas" and "coatsleede" are now anagrams of each other.
- * We used a total of 2 + 5 = 7 steps.
- * It can be shown that there is no way to make them anagrams of each other with less than 7 steps.
- */
-// let s = "cotxazilut",t = "nahrrmcchxwrieqqdwdpneitkxgnt";
-// 27
-// console.log(minSteps(s,t));
-
 
 
 /**
@@ -475,8 +356,9 @@ var kthDigit = function(a,b,k){
  * */
 var fractionRecurringDecimal = function (a,b) {
   // 回傳a,b的分數，若小數點皆是重複數字，則加上括號 => .(XXX)
+  console.log(Math.floor(b / a))
 }
-// let a = 1,b = 2;
+let a = 1,b = 2;
 // "0.5"
 // console.log(fractionRecurringDecimal(a,b));
 
@@ -1116,33 +998,32 @@ var smallestRepunitDivByK = function(k) {
  * @return {number}
  */
 var specialTriplets = function(nums) {
-    let ans = 0;
-    // j as the middle of the triplet.
-    // For each j, you only need:
-    // how many values equal to 2 * nums[j] appear before j
-    // how many appear after j
-    // Then the contribution from index j is just:
-    // leftCount * rightCount
-    // let j = Math.floor(nums[nums.length % 2 ]);
-    // // console.log(j)
-    // for(let i = 0;i < nums.length;++i) {
-
-    // }
-
-    /**
+  /*
+  * j as the middle of the triplet.
+     * For each j, you only need:
+     * how many values equal to 2 * nums[j] appear before j
+     * how many appear after j
+     * Then the contribution from index j is just:
+     * leftCount * rightCount
+     * 
      * j = middle index
      * 在j之前，檢查nums[i] === nums[j] * 2 的有幾個
      * 在j之後，檢查nums[k] === nums[j] * 2 的有幾個
      */
-    // let left = new Map();
-    // let right = new Map();
-    let j = Math.round(nums.length % 2);
-    for(let i = 0;i < nums.length;++i) {
-      if(nums[i] === nums[j] * 2 && i < j){
-        ans++;
-      }
-    }
-    console.log(ans)
+        
+      // Use frequency arrays or maps, e.g. freqPrev and freqNext—to track how many times each value appears before and after the current index.
+      // For each index j in the triplet (i,j,k), compute its contribution to the answer using your freqPrev and freqNext counts.
+  let ans = 0;
+  let freqPrev = new Map() , freqNext = new Map();
+  const MOD = 1e9 + 7;
+  for(const element of nums){
+   freqPrev.set(element, freqPrev.get(element) || 0 + 1);
+  }
+  for(let i = 0;i < nums.length;++i) {
+    
+  }
+  return ans;
+
 };
 // let nums = [8,4,2,8,4];
 /**
@@ -1159,6 +1040,8 @@ var specialTriplets = function(nums) {
  * nums[1] = nums[2] * 2 = 2 * 2 = 4
  * nums[4] = nums[2] * 2 = 2 * 2 = 4
  */
+// let nums = [0,1,0,0];
+// 1
 // console.log(specialTriplets(nums));
 
 
@@ -1227,7 +1110,7 @@ function solve(arr){
 
   // console.log(letterObj)
 };
-let arr = ["IAMDEFANDJKL","thedefgh","xyzDEFghijabc"];
+// let arr = ["IAMDEFANDJKL","thedefgh","xyzDEFghijabc"];
 // describe("Basic tests", () => {
 //   it("Fixed tests", () => {
 //     assert.deepEqual(solve(["abode","ABc","xyzD"]),[4,3,1]);
@@ -1404,3 +1287,77 @@ let s = "010";
 // Output: "001"
 // Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
 // console.log(maximumOddBinaryNumber(s));
+
+/**
+ * 3852. Smallest Pair With Different Frequencies
+ * 
+ * answer = [x,y],answer length === 1
+ * x < y and freq of x and y is different.
+ * 沒有回傳[-1,-1]
+ * 
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var minDistinctFreqPair = function(nums) {
+  // 找出最小的元素x以及出現次數最少的元素y
+  let map = new Map();
+  let minE = nums[0];
+  for(const a of nums){
+    map.has(a) ? map.set(a,map.get(a) + 1) : map.set(a,1);
+  }
+  for(const [key,value] of map.entries()){
+    if(key === minE && value % 2 === 0){
+      console.log(key)
+    }
+  }
+  return [-1,-1]
+  // console.log(map)
+};
+let num = [1,1,2,2,3,4];
+// [1,3]
+// console.log(minDistinctFreqPair(num))
+
+/**
+ * 4048. Count Values With Equally Spaced Occurrences I
+ * 
+ * special: x在nums中出現3次，這三次的index必須要隔一數字(i < j < k)，回傳有幾個不重複(unique)元素符合
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countSpecialIntegers = function(nums) {
+    // 在陣列中出現3次且indx必須隔一數字(i < j < k)
+    let ans = 0;
+    let map = new Map();
+    for(let i = 0;i < nums.length;++i){
+      if(map.has(nums[i])){
+        map.set(nums[i],map.get(nums[i]) + 1)
+      }else{
+        map.set(nums[i],1)
+
+      }
+      // map.has(nums[i]) ? map.set(nums[i],map.get(nums[i]) + 1) : map.set(nums[i],1);
+    }
+    console.log(map)
+    for(const [key,value] of map.entries()){
+      // console.log(key[0])
+      if(value === 3){
+        if(Math.abs(value[0] - value[1]) == Math.abs(value[2] - value[1])){
+          ans++;
+
+        }
+      }
+    }
+    return ans;
+};
+let nums = [1,8,1,5,1,5,8,5];
+/**
+ * 2
+ * 
+ * 1 is special because it occurs exactly three times at equally spaced indices 0, 2, and 4.
+ * 5 is special because it occurs exactly three times at equally spaced indices 3, 5, and 7.
+ * 8 is not special because it occurs only twice.
+ * Therefore, the answer is 2.
+*/
+// let nums = [8,6,6,8,8];
+// 0
+console.log(countSpecialIntegers(nums))
